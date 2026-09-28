@@ -15,9 +15,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Run fetch scripts
-        run: |
-          node fetch-14.js
+      - name: Run fetch
+        run: node fetch.js
       - name: Commit and push
         uses: stefanzweifel/git-auto-commit-action@v5
         with:

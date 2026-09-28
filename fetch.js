@@ -2,13 +2,12 @@ const fs = require('fs');
 
 // ===== المشتركين =====
 const SUBS = [
-  { n: 10, token: 'r6d3k9w2', zeus: 'https://huzcone1u80s.snzasdesuecs.workers.dev/feed/AbuNuwas', spider: false, sloper: true },
-  { n: 11, token: 'm4q8z1v7', zeus: 'https://mpzcnxesub5s.h9zvw7ewuk9s.workers.dev/feed/AbuNuwas', spider: false, sloper: true },
-  { n: 12, token: 'h9c5t2x6', zeus: 'https://qfzb3eejuyls.9rzx6oe9uycs.workers.dev/feed/0727443Z', spider: false, sloper: true },
-  { n: 13, token: 'k8x2n7m4', zeus: 'https://ujzj0fe8ua4s.t6zthde5udls.workers.dev/feed/46416WLG', spider: false, sloper: true },
-  { n: 14, token: 'p3w9v5q1', zeus: 'https://xizl09e7uqns.86zjccecujfs.workers.dev/feed/XMXVCNQQ', spider: false, sloper: true },
-  { n: 15, token: 't7h2j8r4', zeus: 'https://sczembecuxis.mizmy4etujes.workers.dev/feed/6OYL1WRB', spider: false, sloper: true },
-  { n: 16, token: 'b5m1c6w9', zeus: 'https://ubzhqnetujss.sabah-16.workers.dev/feed/8UGULZKC',     spider: false, sloper: true },
+  { n: 1, token: 'r6d3k9w2', zeus: 'https://huzcone1u80s.snzasdesuecs.workers.dev/feed/AbuNuwas', spider: false, sloper: true }, // was 10
+  { n: 2, token: 'm4q8z1v7', zeus: 'https://mpzcnxesub5s.h9zvw7ewuk9s.workers.dev/feed/AbuNuwas', spider: false, sloper: true }, // was 11
+  { n: 3, token: 'h9c5t2x6', zeus: 'https://qfzb3eejuyls.9rzx6oe9uycs.workers.dev/feed/0727443Z', spider: false, sloper: true }, // was 12 (Sabah personal ZEUS)
+  { n: 4, token: 'k8x2n7m4', zeus: 'https://ujzj0fe8ua4s.t6zthde5udls.workers.dev/feed/46416WLG', spider: false, sloper: true }, // was 13
+  { n: 5, token: 't7h2j8r4', zeus: 'https://sczembecuxis.mizmy4etujes.workers.dev/feed/6OYL1WRB', spider: false, sloper: true }, // was 15
+  { n: 6, token: 'b5m1c6w9', zeus: 'https://ubzhqnetujss.sabah-16.workers.dev/feed/8UGULZKC',     spider: false, sloper: true }, // was 16
 ];
 
 const SLOPER_URL = 'https://web-production-7d4a2f.up.railway.app/sub-group/vsdB3SfOWt0e2KwXPpYdxg';

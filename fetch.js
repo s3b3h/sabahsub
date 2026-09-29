@@ -10,7 +10,7 @@ const SUBS = [
   { n: 6, token: 'b5m1c6w9', zeus: 'https://ubzhqnetujss.sabah-16.workers.dev/feed/8UGULZKC',     spider: false, sloper: true }, // was 16
 ];
 
-const SLOPER_URL = 'https://web-production-7d4a2f.up.railway.app/sub-group/vsdB3SfOWt0e2KwXPpYdxg';
+const SLOPER_URL = 'https://web-production-acd0.up.railway.app/sub-group/xFtFzw4R1s5cM-EFLFXFVQ';
 
 const SPIDER = [
   'vless://87487861-c510-4214-99e2-b844b14d73ee@spiderpanel-production-040c.up.railway.app:443?path=%2Fws%2F87487861-c510-4214-99e2-b844b14d73ee&security=tls&encryption=none&alpn=http%2F1.1&host=spiderpanel-production-040c.up.railway.app&fp=chrome&type=ws&sni=spiderpanel-production-040c.up.railway.app',

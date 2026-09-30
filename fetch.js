@@ -1,21 +1,20 @@
 const fs = require('fs');
 
 const SUBS = [
-  { n: 1, token: 'r6d3k9w2', zeus: 'https://huzcone1u80s.snzasdesuecs.workers.dev/feed/AbuNuwas', spider: false, sloper: true },
-  { n: 2, token: 'm4q8z1v7', zeus: 'https://mpzcnxesub5s.h9zvw7ewuk9s.workers.dev/feed/AbuNuwas', spider: false, sloper: true },
-  { n: 3, token: 'h9c5t2x6', zeus: 'https://qfzb3eejuyls.9rzx6oe9uycs.workers.dev/feed/0727443Z', spider: false, sloper: true },
-  { n: 4, token: 'k8x2n7m4', zeus: 'https://ujzj0fe8ua4s.t6zthde5udls.workers.dev/feed/46416WLG', spider: false, sloper: true },
-  { n: 5, token: 't7h2j8r4', zeus: 'https://sczembecuxis.mizmy4etujes.workers.dev/feed/6OYL1WRB', spider: false, sloper: true },
-  { n: 6, token: 'b5m1c6w9', zeus: 'https://ubzhqnetujss.sabah-16.workers.dev/feed/8UGULZKC', spider: false, sloper: true },
+  { n: 1, token: 'r6d3k9w2', zeus: 'https://huzcone1u80s.snzasdesuecs.workers.dev/feed/AbuNuwas', spider: false, rail: true },
+  { n: 2, token: 'm4q8z1v7', zeus: 'https://mpzcnxesub5s.h9zvw7ewuk9s.workers.dev/feed/AbuNuwas', spider: false, rail: true },
+  { n: 3, token: 'h9c5t2x6', zeus: 'https://qfzb3eejuyls.9rzx6oe9uycs.workers.dev/feed/0727443Z', spider: false, rail: true },
+  { n: 4, token: 'k8x2n7m4', zeus: 'https://ujzj0fe8ua4s.t6zthde5udls.workers.dev/feed/46416WLG', spider: false, rail: true },
+  { n: 5, token: 't7h2j8r4', zeus: 'https://sczembecuxis.mizmy4etujes.workers.dev/feed/6OYL1WRB', spider: false, rail: true },
+  { n: 6, token: 'b5m1c6w9', zeus: 'https://ubzhqnetujss.sabah-16.workers.dev/feed/8UGULZKC', spider: false, rail: true },
 ];
 
-const SLOPER = [
-  'vless://1cf34f0b-9d8e-e29a-4d6d-e14fc8f5566d@juzojuzojuzo0-sloper-production.up.railway.app:443?encryption=none&security=tls&sni=juzojuzojuzo0-sloper-production.up.railway.app&fp=chrome&alpn=http%2F1.1&type=ws&host=juzojuzojuzo0-sloper-production.up.railway.app&path=%2Fws%2F1cf34f0b-9d8e-e29a-4d6d-e14fc8f5566d#VWS-CH-DEF-01',
-  'vless://e95dd740-9889-89bb-96d9-a51e18188c1f@juzojuzojuzo0-sloper-production.up.railway.app:443?encryption=none&security=tls&sni=juzojuzojuzo0-sloper-production.up.railway.app&fp=chrome&alpn=h2&type=ws&host=juzojuzojuzo0-sloper-production.up.railway.app&path=%2Fws%2Fe95dd740-9889-89bb-96d9-a51e18188c1f#VWS-CH-H2-02',
-  'vless://2bbd3dcb-8a89-b78d-7520-71de803c41a9@juzojuzojuzo0-sloper-production.up.railway.app:443?encryption=none&security=tls&sni=juzojuzojuzo0-sloper-production.up.railway.app&fp=chrome&alpn=http%2F1.1&type=ws&host=juzojuzojuzo0-sloper-production.up.railway.app&path=%2Fws%2F2bbd3dcb-8a89-b78d-7520-71de803c41a9#VWS-CH-11-03',
-  'vless://8a940b19-a0f8-5816-be9b-82897326e82a@juzojuzojuzo0-sloper-production.up.railway.app:443?encryption=none&security=tls&sni=juzojuzojuzo0-sloper-production.up.railway.app&fp=ios&alpn=http%2F1.1&type=ws&host=juzojuzojuzo0-sloper-production.up.railway.app&path=%2Fws%2F8a940b19-a0f8-5816-be9b-82897326e82a#VWS-IO-DEF-05',
-  'vless://48be4bd2-eeca-13b4-cdee-9655aa72803b@juzojuzojuzo0-sloper-production.up.railway.app:443?encryption=none&security=tls&sni=juzojuzojuzo0-sloper-production.up.railway.app&fp=ios&alpn=h2&type=ws&host=juzojuzojuzo0-sloper-production.up.railway.app&path=%2Fws%2F48be4bd2-eeca-13b4-cdee-9655aa72803b#VWS-IO-H2-06',
-  'vless://a3dc9bca-49aa-f847-4c45-3c28b2e9da29@juzojuzojuzo0-sloper-production.up.railway.app:443?encryption=none&security=tls&sni=juzojuzojuzo0-sloper-production.up.railway.app&fp=ios&alpn=http%2F1.1&type=ws&host=juzojuzojuzo0-sloper-production.up.railway.app&path=%2Fws%2Fa3dc9bca-49aa-f847-4c45-3c28b2e9da29#VWS-IO-11-07',
+const RAIL = [
+  'vless://4221b1da-5ebd-4833-9c2c-f0f8175549c2@juzojuzojuzo0-sloper-production.up.railway.app:443?encryption=none&security=tls&sni=juzojuzojuzorail0rail-production.up.railway.app&fp=chrome&alpn=http%2F1.1&type=ws&host=juzojuzojuzorail0rail-production.up.railway.app&path=%2FSideRail%2Fws-LGX3xaN0#icubaby%2FSideRail%20-%20VLESS-WS',
+  'vless://4221b1da-5ebd-4833-9c2c-f0f8175549c2@juzojuzojuzo0-sloper-production.up.railway.app:443?encryption=none&security=tls&sni=juzojuzojuzorail0rail-production.up.railway.app&fp=chrome&alpn=h2%2Chttp%2F1.1&type=xhttp&host=juzojuzojuzorail0rail-production.up.railway.app&path=%2FSideRail%2Fxhttp--NoC0FE6#icubaby%2FSideRail%20-%20VLESS-XHTTP',
+  'vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogImljdWJhYnkvU2lkZVJhaWwgLSBWTWVzcy1XUyIsDQogICJhZGQiOiAianV6b2p1em9qdXpvMC1zbG9wZXItcHJvZHVjdGlvbi51cC5yYWlsd2F5LmFwcCIsDQogICJwb3J0IjogIjQ0MyIsDQogICJpZCI6ICI0MjIxYjFkYS01ZWJkLTQ4MzMtOWMyYy1mMGY4MTc1NTQ5YzIiLA0KICAiYWlkIjogIjAiLA0KICAic2N5IjogImF1dG8iLA0KICAibmV0IjogIndzIiwNCiAgInR5cGUiOiAibm9uZSIsDQogICJob3N0IjogImp1em9qdXpvanV6b3JhaWwwcmFpbC1wcm9kdWN0aW9uLnVwLnJhaWx3YXkuYXBwIiwNCiAgInBhdGgiOiAiL1NpZGVSYWlsL3dzLUVwN3FQOUJHIiwNCiAgInRscyI6ICJ0bHMiLA0KICAic25pIjogImp1em9qdXpvanV6b3JhaWwwcmFpbC1wcm9kdWN0aW9uLnVwLnJhaWx3YXkuYXBwIiwNCiAgImFscG4iOiAiaHR0cC8xLjEiLA0KICAiZnAiOiAiY2hyb21lIiwNCiAgImNzIjogIiIsDQogICJpbnNlY3VyZSI6ICIwIiwNCiAgInZjbiI6ICIiLA0KICAicGNzIjogIiIsDQogICJkaWFsTW9kZSI6ICIiDQp9',
+  'trojan://GtB2RF22MSGW7tPO@juzojuzojuzo0-sloper-production.up.railway.app:443?security=tls&sni=juzojuzojuzorail0rail-production.up.railway.app&fp=chrome&alpn=http%2F1.1&type=ws&host=juzojuzojuzorail0rail-production.up.railway.app&path=%2FSideRail%2Fws-P5af01Xv#icubaby%2FSideRail%20-%20Trojan-WS',
+  'vless://4221b1da-5ebd-4833-9c2c-f0f8175549c2@juzojuzojuzo0-sloper-production.up.railway.app:443?encryption=none&security=tls&sni=juzojuzojuzorail0rail-production.up.railway.app&fp=chrome&alpn=http%2F1.1&type=httpupgrade&host=juzojuzojuzorail0rail-production.up.railway.app&path=%2FSideRail%2Fhttpupgrade-C6RQyBMA#icubaby%2FSideRail%20-%20VLESS-HTTPUpgrade',
 ];
 
 const SPIDER = [
@@ -92,30 +91,24 @@ function getSpider() {
   return SPIDER.map((line, i) => setName(line, `🇩🇪 │ Imru Al-Qays │ ${i + 1}`));
 }
 
-function getSloper() {
-  const picked = [];
-  for (const line of SLOPER) {
-    const m = getName(line).match(/(\d+)\s*$/);
-    if (!m) continue;
-    const n = parseInt(m[1], 10);
-    if (n < 1 || n > 8) continue;
-    picked.push([n, setName(line, `🇳🇱 │ Abu al-Atahiya │ ⚡ │ ${n}`)]);
-  }
-  picked.sort((a, b) => a[0] - b[0]);
-  return picked.map(p => p[1]);
+function getRail() {
+  return RAIL.map((line, i) => {
+    const proto = getName(line).split(' - ').pop().trim();
+    return setName(line, `🇳🇱 │ Abu al-Atahiya │ ⚡ │ ${i + 1} │ ${proto}`);
+  });
 }
 
 async function main() {
   fs.mkdirSync('sub', { recursive: true });
-  const sloper = getSloper();
-  console.log('SLOPER OK:', sloper.length);
+  const rail = getRail();
+  console.log('RAIL OK:', rail.length);
 
   for (const s of SUBS) {
     const out = [];
     try { const z = await getZeus(s.zeus); out.push(...z); console.log(`#${s.n} ZEUS OK:`, z.length); }
     catch (e) { console.log(`#${s.n} ZEUS ERROR:`, e.message); }
     if (s.spider) out.push(...getSpider());
-    if (s.sloper) out.push(...sloper);
+    if (s.rail) out.push(...rail);
     if (out.length === 0) { console.log(`#${s.n} nothing, keeping old file`); continue; }
     fs.writeFileSync(`sub/${s.token}.txt`, Buffer.from(out.join('\n'), 'utf-8').toString('base64'));
     console.log(`#${s.n} saved:`, out.length);

@@ -12,15 +12,12 @@ const SUBS = [
 const JARIR_URL = 'https://raw.githubusercontent.com/patterniha/Free-Configs/main/configs.txt';
 
 const MAJMA = [
-  'ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpyNUQ2WU9TclQ2a0M3NnJv@20.123.34.66:443#mlmvpn2229',
-  'ss://MjAyMi1ibGFrZTMtY2hhY2hhMjAtcG9seTEzMDU6UzVOSG9TbDFiZ2E5QlBud0VWTGgreUNpVDNLRWhrc0pPNnFycDNBZTJlND0=@158.178.158.96:45819#mlmvpn3300',
   'vless://ff2936d3-caa4-4b79-bb96-1475bd39ceda@113.30.154.75:443?flow=xtls-rprx-vision&fp=random&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&security=reality&sid=&sni=sellflow.org&type=tcp#mlmvpn4215',
   'trojan://mitivpn@199.232.78.160:443?security=tls&sni=ssl.fastly.com&alpn=http/1.1&type=ws&host=mitivpn---us--s---mitivpn-11.global.ssl.fastly.net&path=/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/D-e1i@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN#mlmvpn4529',
   'trojan://mitivpn@199.232.78.188:443?path=/?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET&allowInsecure=0&host=mitivpn---gb--s---mitivpn-1.global.ssl.fastly.net&sni=ssl.fastly.com&security=tls&alpn=http/1.1&fp=chrome&insecure=0&type=ws#mlmvpn2115',
   'trojan://mitivpn@199.232.78.101:443?path=/---@GHOFLSHCAN---@GHOFLSHCAN/---@GHOFLSHCAN---@GHOFLSHCAN/---@GHOFLSHCAN---@GHOFLSHCAN/NLSus---@GHOFLSHCAN---@GHOFLSHCAN/---@GHOFLSHCAN---@GHOFLSHCAN/---@GHOFLSHCAN---@GHOFLSHCAN&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---de--s---mitivpn-11.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#mlmvpn9602',
   'trojan://mitivpn@167.82.76.7:443?security=tls&alpn=http/1.1&insecure=0&host=mitivpn---us--s---mitivpn-11.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#mlmvpn6658',
   'trojan://mitivpn@199.232.78.170:443?security=tls&alpn=http/1.1&insecure=0&host=mitivpn---de--s---mitivpn-11.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#mlmvpn9512',
-  'ss://YWVzLTEyOC1nY206MTY4MzU1MWVhZTRlZWFiYTVkYjgwN2VhMjZlYjEyMDQ=@103.214.108.219:17521#mlmvpn8314',
   'vless://7c973569-71da-4d18-8c80-aa4c8ee2f257@216.195.196.86:8443?flow=xtls-rprx-vision&fp=chrome&pbk=5wGgDloyck_L25Y5rkWorpV3IK00pK0Lki7LR0VY0io&security=reality&sid=4fba6fd2c74fd18f&sni=www.cloudflare.com&type=tcp#mlmvpn947',
   'vless://aa7c2760-e4c3-4034-9455-40a8a584f64c@199.232.78.159:443/?type=ws&encryption=none&flow=&host=pannn1.global.ssl.fastly.net&path=/&security=tls&sni=ssl.fastly.com&alpn=networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-#mlmvpn6199',
   'vless://8079ccd4-4b4b-44e2-92f0-8f0367ad9c24@bgroup.us2.ilovegairport.com:443?&security=reality&flow=xtls-rprx-vision&pbk=s8KrYQFpXXkbCvW6ORmVrm4yC5GpVxCHfIoV9Z_FiUY&sid=afe73effea&fp=chrome&sni=us-west-2.console.aws.amazon.com&type=tcp&headerType=none&host=us-west-2.console.aws.amazon.com&path=%2F#mlmvpn6152',

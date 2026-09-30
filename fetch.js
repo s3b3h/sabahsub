@@ -1,6 +1,3 @@
-MAJMA OK: 12
-JARIR OK: [عدد]
-
 const fs = require('fs');
 
 const SUBS = [

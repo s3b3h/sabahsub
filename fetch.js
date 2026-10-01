@@ -9,7 +9,17 @@ const SUBS = [
   { n: 6, token: 'b5m1c6w9', zeus: 'https://ubzhqnetujss.sabah-16.workers.dev/feed/8UGULZKC', spider: false, majma: true, jarir: true },
 ];
 
-const JARIR_URL = 'https://raw.githubusercontent.com/patterniha/Free-Configs/main/configs.txt';
+// JARIR: fixed servers (flag = country, ai = add AI to name)
+const JARIR = [
+  { flag: '', ai: true, line: 'vless://d02fcca7-e77f-42f1-94bf-5545eec68f0a@109.122.251.253:2053?security=reality&encryption=none&pbk=fY4zG7EPbiRzlabmT4p_LFuHj6vfMAEdxNoCt-bCPz8&headerType=none&fp=chrome&type=tcp&sni=play.google.com&sid=5c56ebc08e4ad1d9' },
+  { flag: '🇫🇷', ai: false, line: 'vless://5d16ac22-6eea-426f-b778-6f4c2961faef@176.109.108.244:9880?mode=gun&security=reality&encryption=none&authority=&pbk=bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU&fp=random&type=grpc&serviceName=grpc-tunnel&sni=dl.google.com&sid=aabb' },
+  { flag: '🇬🇧', ai: false, line: 'vless://5d16ac22-6eea-426f-b778-6f4c2961faef@176.109.111.154:9881?mode=gun&security=reality&encryption=none&authority=&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&fp=random&type=grpc&serviceName=grpc-tunnel&sni=dl.google.com' },
+  { flag: '🇫🇮', ai: true, line: 'vless://e3e9805a-6c8b-4edd-8ee8-621df79806eb@142.228.52.79:8443?mode=gun&security=reality&encryption=none&authority=&pbk=B5-zPBBAI-UATY7rSvoggM1T65h9CfVw7yBluBNd-yI&fp=chrome&type=grpc&serviceName=&sni=fi.aksay.pro&sid=4a5f04a5ea205fc3' },
+  { flag: '', ai: true, line: 'vless://d02fcca7-e77f-42f1-94bf-5545eec68f0a@109.122.251.253:4545?security=reality&encryption=none&pbk=lCZmgGgWOaJSXIyoeb2qmwpDnk_vTFwGoGmmbgUrhTs&headerType=none&fp=chrome&type=tcp&sni=google-analytics.com&sid=3cdd4ffa012ca22f' },
+  { flag: '🇩🇰', ai: false, line: 'vless://5d16ac22-6eea-426f-b778-6f4c2961faef@176.109.111.7:9881?mode=gun&security=reality&encryption=none&authority=&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&fp=random&type=grpc&serviceName=grpc-tunnel&sni=dl.google.com&sid=aa' },
+  { flag: '🇸🇪', ai: false, line: 'vless://5d16ac22-6eea-426f-b778-6f4c2961faef@176.109.104.103:9881?mode=gun&security=reality&encryption=none&authority=&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&fp=random&type=grpc&serviceName=grpc-tunnel&sni=dl.google.com' },
+  { flag: '', ai: true, line: 'vless://d02fcca7-e77f-42f1-94bf-5545eec68f0a@109.122.251.253:12345?security=reality&encryption=none&pbk=no5OXXraenpTo6GxibdtA4fOFTMOmt4d6Dn2HPfUiAQ&headerType=none&fp=chrome&type=tcp&sni=play.google.com&sid=129faa21c67fd282' },
+];
 
 const MAJMA = [
   'vless://fdc48be3-a615-41ac-8bd1-ed844c931048@188.114.97.6:443?encryption=none&security=tls&sni=edgetunnel-4uw.pages.dev&alpn=http%2F1.1&fm=%7B%22tcp%22%3A%5B%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%22tlshello%22%2C%22lengths%22%3A%5B%220%22%2C%22104%22%2C%221%22%5D%2C%22delays%22%3A%5B%220%22%5D%2C%22maxSplit%22%3A%220%22%7D%7D%2C%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%221-1%22%2C%22lengths%22%3A%5B%22114%22%2C%221%22%5D%2C%22delays%22%3A%5B%221%22%5D%2C%22maxSplit%22%3A%2211%22%7D%7D%5D%7D&type=ws&host=edgetunnel-4uw.pages.dev&path=%2F%3FTelegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET#mlmvpn1',
@@ -24,6 +34,7 @@ const MAJMA = [
   'vless://fdc48be3-a615-41ac-8bd1-ed844c931048@104.21.5.115:443?encryption=none&security=tls&sni=edgetunnel-4uw.pages.dev&fp=unsafe&fm=%7B%22tcp%22%3A%5B%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%22tlshello%22%2C%22lengths%22%3A%5B%220%22%2C%22104%22%2C%221%22%5D%2C%22delays%22%3A%5B%220%22%5D%2C%22maxSplit%22%3A%220%22%7D%7D%2C%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%221-1%22%2C%22lengths%22%3A%5B%22114%22%2C%221%22%5D%2C%22delays%22%3A%5B%221%22%5D%2C%22maxSplit%22%3A%2211%22%7D%7D%5D%7D&type=ws&host=edgetunnel-4uw.pages.dev&path=%2F%3FTELEGRAM--MARAMBASHI--MARAMBASHI%3Fed%3D512#mlmvpn10',
   'vless://69848b7f-3ee7-4c30-b035-6cff5e08ac4a@188.114.96.3:8443?encryption=none&security=tls&sni=us.luxes.network&fp=safari&type=ws&path=%2Fassets%3Fed%23Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET#%F0%9F%87%BA%F0%9F%87%B8%20mlmvpn11',
 ];
+
 const COUNTRY = { us: '🇺🇸', de: '🇩🇪', gb: '🇬🇧', uk: '🇬🇧', nl: '🇳🇱', fr: '🇫🇷', ca: '🇨🇦', fi: '🇫🇮', se: '🇸🇪', tr: '🇹🇷', sg: '🇸🇬', jp: '🇯🇵' };
 
 const SPIDER = [
@@ -134,46 +145,32 @@ function getMajma() {
     const q = base.includes('?') ? base.slice(base.indexOf('?') + 1) : '';
     const net = (q.match(/(?:^|&)type=([^&]+)/) || ['', ''])[1].toLowerCase();
     const reality = /security=reality/.test(q);
-    const flag = majmaFlag(base);
+    let tagText = tag;
+    try { tagText = decodeURIComponent(tag); } catch {}
+    const flag = majmaFlag(base + ' ' + tagText);
     const name = (flag ? flag + ' │ ' : '') + `Abu al-Atahiya │ ⚡ │ ${code} │ ` + majmaProto(scheme, net, reality);
     return base + '#' + encodeURIComponent(name);
   });
 }
 
-async function getJarir() {
-  const out = [];
-  let n = 0;
-  for (const line of toLines(await get(JARIR_URL))) {
-    try {
-      const scheme = line.split('://')[0].toLowerCase();
-      let flag, proto;
-      if (scheme === 'vmess') {
-        const obj = JSON.parse(Buffer.from(line.slice(8).split('#')[0], 'base64').toString('utf-8'));
-        flag = majmaFlag((obj.ps || '') + ' ' + (obj.host || ''));
-        proto = majmaProto('vmess', obj.net, false);
-      } else {
-        const h = line.indexOf('#');
-        const base = h === -1 ? line : line.slice(0, h);
-        const q = base.includes('?') ? base.slice(base.indexOf('?') + 1) : '';
-        const net = (q.match(/(?:^|&)type=([^&]+)/) || ['', ''])[1].toLowerCase();
-        flag = majmaFlag(getName(line) + ' ' + base);
-        proto = majmaProto(scheme, net, /security=reality/.test(q));
-      }
-      n++;
-      out.push(setName(line.startsWith('vmess://') ? line.split('#')[0] : line, (flag ? flag + ' │ ' : '') + `Jarir │ ${n} │ ${proto}`));
-    } catch {}
-  }
-  return out;
+function getJarir() {
+  return JARIR.map((s, i) => {
+    const base = s.line.split('#')[0];
+    const scheme = base.split('://')[0].toLowerCase();
+    const q = base.includes('?') ? base.slice(base.indexOf('?') + 1) : '';
+    const net = (q.match(/(?:^|&)type=([^&]+)/) || ['', ''])[1].toLowerCase();
+    const proto = majmaProto(scheme, net, /security=reality/.test(q));
+    const name = (s.flag ? s.flag + ' │ ' : '') + `Jarir │ ${i + 1} │ ${proto}` + (s.ai ? ' │ AI' : '');
+    return base + '#' + encodeURIComponent(name);
+  });
 }
 
 async function main() {
   fs.mkdirSync('sub', { recursive: true });
   const majma = getMajma();
   console.log('MAJMA OK:', majma.length);
-
-  let jarir = [];
-  try { jarir = await getJarir(); console.log('JARIR OK:', jarir.length); }
-  catch (e) { console.log('JARIR ERROR:', e.message); }
+  const jarir = getJarir();
+  console.log('JARIR OK:', jarir.length);
 
   for (const s of SUBS) {
     const out = [];

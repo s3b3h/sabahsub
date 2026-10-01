@@ -19,6 +19,7 @@ const JARIR = [
   { flag: '🇩🇰', ai: false, line: 'vless://5d16ac22-6eea-426f-b778-6f4c2961faef@176.109.111.7:9881?mode=gun&security=reality&encryption=none&authority=&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&fp=random&type=grpc&serviceName=grpc-tunnel&sni=dl.google.com&sid=aa' },
   { flag: '🇸🇪', ai: false, line: 'vless://5d16ac22-6eea-426f-b778-6f4c2961faef@176.109.104.103:9881?mode=gun&security=reality&encryption=none&authority=&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&fp=random&type=grpc&serviceName=grpc-tunnel&sni=dl.google.com' },
   { flag: '', ai: true, line: 'vless://d02fcca7-e77f-42f1-94bf-5545eec68f0a@109.122.251.253:12345?security=reality&encryption=none&pbk=no5OXXraenpTo6GxibdtA4fOFTMOmt4d6Dn2HPfUiAQ&headerType=none&fp=chrome&type=tcp&sni=play.google.com&sid=129faa21c67fd282' },
+  { flag: '🇩🇪', ai: false, line: 'vless://7c59a119-d02e-4944-8344-b7b138446cc4@91.107.246.231:9145?encryption=none&security=reality&sni=www.ibm.com&fp=chrome&pbk=Fw1tpKBQ_bT_eSTbaCSYBthpXAQ76kujwfywvjgpUA0&sid=5e06032a9c448538&type=tcp&headerType=none' },
 ];
 
 const MAJMA = [

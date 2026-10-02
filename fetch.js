@@ -1,4 +1,5 @@
 const fs = require('fs');
+const NL = String.fromCharCode(10);
 
 const SUBS = [
   { n: 1, token: 'r6d3k9w2', zeus: 'https://huzcone1u80s.snzasdesuecs.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, bpb2: false },
@@ -105,8 +106,7 @@ function decodeSub(text) {
 }
 
 function toLines(text) {
-  return decodeSub(text).split(/\r?
-/).map(s => s.trim()).filter(s => s.includes('://'));
+  return decodeSub(text).split(NL).map(s => s.trim()).filter(s => s.includes('://'));
 }
 
 function getName(line) {
@@ -221,8 +221,7 @@ async function main() {
     if (s.bpb) out.push(...bpb);
     if (s.bpb2) out.push(...bpb2);
     if (out.length === 0) { console.log(`#${s.n} nothing, keeping old file`); continue; }
-    fs.writeFileSync(`sub/${s.token}.txt`, Buffer.from(out.join('
-'), 'utf-8').toString('base64'));
+    fs.writeFileSync(`sub/${s.token}.txt`, Buffer.from(out.join(NL), 'utf-8').toString('base64'));
     console.log(`#${s.n} saved:`, out.length);
   }
 }

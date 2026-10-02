@@ -1,12 +1,12 @@
 const fs = require('fs');
 
 const SUBS = [
-  { n: 1, token: 'r6d3k9w2', zeus: 'https://huzcone1u80s.snzasdesuecs.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, blue: false },
-  { n: 2, token: 'm4q8z1v7', zeus: 'https://mpzcnxesub5s.h9zvw7ewuk9s.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, blue: false },
-  { n: 3, token: 'h9c5t2x6', zeus: 'https://qfzb3eejuyls.9rzx6oe9uycs.workers.dev/feed/0727443Z', spider: false, majma: true, bpb: true, blue: false },
-  { n: 4, token: 'k8x2n7m4', zeus: 'https://ujzj0fe8ua4s.t6zthde5udls.workers.dev/feed/46416WLG', spider: false, majma: true, bpb: false, blue: true },
-  { n: 5, token: 't7h2j8r4', zeus: 'https://sczembecuxis.mizmy4etujes.workers.dev/feed/6OYL1WRB', spider: false, majma: true, bpb: false, blue: true },
-  { n: 6, token: 'b5m1c6w9', zeus: 'https://ubzhqnetujss.sabah-16.workers.dev/feed/8UGULZKC', spider: false, majma: true, bpb: false, blue: true },
+  { n: 1, token: 'r6d3k9w2', zeus: 'https://huzcone1u80s.snzasdesuecs.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, bpb2: false },
+  { n: 2, token: 'm4q8z1v7', zeus: 'https://mpzcnxesub5s.h9zvw7ewuk9s.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, bpb2: false },
+  { n: 3, token: 'h9c5t2x6', zeus: 'https://qfzb3eejuyls.9rzx6oe9uycs.workers.dev/feed/0727443Z', spider: false, majma: true, bpb: true, bpb2: false },
+  { n: 4, token: 'k8x2n7m4', zeus: 'https://ujzj0fe8ua4s.t6zthde5udls.workers.dev/feed/46416WLG', spider: false, majma: true, bpb: false, bpb2: true },
+  { n: 5, token: 't7h2j8r4', zeus: 'https://sczembecuxis.mizmy4etujes.workers.dev/feed/6OYL1WRB', spider: false, majma: true, bpb: false, bpb2: true },
+  { n: 6, token: 'b5m1c6w9', zeus: 'https://ubzhqnetujss.sabah-16.workers.dev/feed/8UGULZKC', spider: false, majma: true, bpb: false, bpb2: true },
 ];
 
 const MAJMA = [
@@ -45,27 +45,35 @@ const BPB = [
   'trojan://5BLKCS%24QPFN2ToS.Oig@www.fiverr.com:2053?security=tls&sni=j52s0NcpuCR872VHT23.PaGEs.Dev&type=ws&host=j52s0ncpucr872vht23.pages.dev&path=%2Ftr%2FAJD8WbwhxxPosF7gjx4KSFCWk%3Fed%3D2560',
 ];
 
-// BLUE = المتنبي (للمشتركين 4-6)
-const BLUE = [
-  'vless://1616f738-c57e-45b5-84b0-76356c5c9444@rough-night-9695.ride931.workers.dev:443?encryption=none&security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'vless://1616f738-c57e-45b5-84b0-76356c5c9444@188.114.97.6:443?encryption=none&security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'vless://1616f738-c57e-45b5-84b0-76356c5c9444@www.fiverr.com:443?encryption=none&security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'vless://1616f738-c57e-45b5-84b0-76356c5c9444@rough-night-9695.ride931.workers.dev:2053?encryption=none&security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'vless://1616f738-c57e-45b5-84b0-76356c5c9444@rough-night-9695.ride931.workers.dev:2083?encryption=none&security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'vless://1616f738-c57e-45b5-84b0-76356c5c9444@rough-night-9695.ride931.workers.dev:2087?encryption=none&security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'vless://1616f738-c57e-45b5-84b0-76356c5c9444@rough-night-9695.ride931.workers.dev:2096?encryption=none&security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'vless://1616f738-c57e-45b5-84b0-76356c5c9444@rough-night-9695.ride931.workers.dev:8443?encryption=none&security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'trojan://wd_%5Erc2%5EBoqw0WlreSW@rough-night-9695.ride931.workers.dev:443?security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'trojan://wd_%5Erc2%5EBoqw0WlreSW@188.114.97.6:443?security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'trojan://wd_%5Erc2%5EBoqw0WlreSW@www.fiverr.com:443?security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'trojan://wd_%5Erc2%5EBoqw0WlreSW@rough-night-9695.ride931.workers.dev:2053?security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'trojan://wd_%5Erc2%5EBoqw0WlreSW@rough-night-9695.ride931.workers.dev:2083?security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'trojan://wd_%5Erc2%5EBoqw0WlreSW@rough-night-9695.ride931.workers.dev:2087?security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'trojan://wd_%5Erc2%5EBoqw0WlreSW@rough-night-9695.ride931.workers.dev:2096?security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
-  'trojan://wd_%5Erc2%5EBoqw0WlreSW@rough-night-9695.ride931.workers.dev:8443?security=tls&sni=rough-night-9695.ride931.workers.dev&type=ws&host=rough-night-9695.ride931.workers.dev&path=%2Fbk-ws',
+// BPB2 = الفراهيدي (للمشتركين 4-6)
+const BPB2 = [
+  'vless://2fc83242-00df-4599-941b-1590777dc062@dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev:443?encryption=none&host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Fvl%2FCfv4t7YCT86Q9XlROlzKYw%3Fed%3D2560&sni=dk8kDCPtc35y-2a3ouygVB7eHecry9C.PaGes.DEv',
+  'vless://2fc83242-00df-4599-941b-1590777dc062@172.66.47.82:443?encryption=none&host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Fvl%2FLt1V2w3PjTO5EYpfUGcp%3Fed%3D2560&sni=Dk8KdCptc35y-2a3oUYgVb7EHeCry9C.PaGes.dEV',
+  'vless://2fc83242-00df-4599-941b-1590777dc062@172.66.44.174:443?encryption=none&host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Fvl%2FAsd4PtYXwFZxPBfMCTRauj6%3Fed%3D2560&sni=dK8KDCPTC35y-2A3ouYGVB7ehecRy9C.PaGeS.Dev',
+  'vless://2fc83242-00df-4599-941b-1590777dc062@www.ignitelimit.com:443?encryption=none&host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Fvl%2FAzujeRNiM5gWBnwwZg7NhUaB4xIfUHC%3Fed%3D2560&sni=Dk8kdcPTC35Y-2A3oUyGvb7EhECRY9c.PaGeS.DeV',
+  'vless://2fc83242-00df-4599-941b-1590777dc062@chatgpt.com:443?encryption=none&host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Fvl%2FDhNGuMFn9f9CqV6gL4zBUL31BlD0Ab%3Fed%3D2560&sni=DK8KDCPtc35Y-2a3oUyGVb7EhEcRy9C.pAgeS.dev',
+  'vless://2fc83242-00df-4599-941b-1590777dc062@www.fiverr.com:443?encryption=none&host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Fvl%2Fy9moEfFQfmojahlwmAXPHXxDPEgok%3Fed%3D2560&sni=DK8kDcPTc35Y-2a3ouYgvB7eHecRY9c.pAgeS.dEV',
+  'vless://2fc83242-00df-4599-941b-1590777dc062@dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev:2053?encryption=none&host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Fvl%2FeTstea0rOCbkntrIC98V5%3Fed%3D2560&sni=DK8kdcptC35Y-2a3OuyGvB7ehEcRY9c.PAgeS.Dev',
+  'vless://2fc83242-00df-4599-941b-1590777dc062@172.66.47.82:2053?encryption=none&host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Fvl%2Ft8YsbTrkzECVOnmAO1CtiAt%3Fed%3D2560&sni=dk8kDCptC35Y-2a3OuYGvb7eHecRy9C.pAGeS.deV',
+  'vless://2fc83242-00df-4599-941b-1590777dc062@172.66.44.174:2053?encryption=none&host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Fvl%2FuZjVrIjDBDvWOHIB0F5NtZNwfn%3Fed%3D2560&sni=dk8KdCpTc35y-2a3ouYgVB7eheCRy9C.pAgES.dEv',
+  'vless://2fc83242-00df-4599-941b-1590777dc062@www.ignitelimit.com:2053?encryption=none&host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Fvl%2Fcx0h0B5GzW7CDM0zaMMO6hP%3Fed%3D2560&sni=DK8kDcPTC35y-2a3OUyGVb7EheCry9c.PAGes.dEV',
+  'vless://2fc83242-00df-4599-941b-1590777dc062@chatgpt.com:2053?encryption=none&host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Fvl%2FJTuQuFCUpwRakgMX%3Fed%3D2560&sni=Dk8kDcPTc35Y-2a3oUYGVB7Ehecry9C.PAGES.dev',
+  'vless://2fc83242-00df-4599-941b-1590777dc062@www.fiverr.com:2053?encryption=none&host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Fvl%2FgCu6Z8bEOuEi7lr25%3Fed%3D2560&sni=Dk8KdCptc35y-2a3oUYGvB7eHecRY9C.Pages.dev',
+  'trojan://etmW1GglFakEXVcq12UZ@dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev:443?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2F4WlTMnD5VCicLFq42wKiZrBPTV%3Fed%3D2560&sni=dk8kDCPtc35y-2a3ouygVB7eHecry9C.PaGes.DEv',
+  'trojan://etmW1GglFakEXVcq12UZ@172.66.47.82:443?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2FP8vrCrMyvvrMfs1Pdw0YXo1bodK8Hte%3Fed%3D2560&sni=Dk8KdCptc35y-2a3oUYgVb7EHeCry9C.PaGes.dEV',
+  'trojan://etmW1GglFakEXVcq12UZ@172.66.44.174:443?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2F4tLCCGARz6Yd6dyRC%3Fed%3D2560&sni=dK8KDCPTC35y-2A3ouYGVB7ehecRy9C.PaGeS.Dev',
+  'trojan://etmW1GglFakEXVcq12UZ@www.ignitelimit.com:443?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2FkxFb7C0FB4Sha2yJXhmGZ6bxZ%3Fed%3D2560&sni=Dk8kdcPTC35Y-2A3oUyGvb7EhECRY9c.PaGeS.DeV',
+  'trojan://etmW1GglFakEXVcq12UZ@chatgpt.com:443?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2F2fBmsIZkxMqeOptiRUMO3s6xWPq1g%3Fed%3D2560&sni=DK8KDCPtc35Y-2a3oUyGVb7EhEcRy9C.pAgeS.dev',
+  'trojan://etmW1GglFakEXVcq12UZ@www.fiverr.com:443?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2FwMllZze5KIM6dgSh%3Fed%3D2560&sni=DK8kDcPTc35Y-2a3ouYgvB7eHecRY9c.pAgeS.dEV',
+  'trojan://etmW1GglFakEXVcq12UZ@dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev:2053?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2FEX41i35X8W7e7spLJcMsxCB09BP%3Fed%3D2560&sni=DK8kdcptC35Y-2a3OuyGvB7ehEcRY9c.PAgeS.Dev',
+  'trojan://etmW1GglFakEXVcq12UZ@172.66.47.82:2053?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2FcXwuXF9ZDUAkVsvg7L9ocHSFf95q%3Fed%3D2560&sni=dk8kDCptC35Y-2a3OuYGvb7eHecRy9C.pAGeS.deV',
+  'trojan://etmW1GglFakEXVcq12UZ@172.66.44.174:2053?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2F0MaVJHaLUxzl2SX6RuardLMQVnI8myN%3Fed%3D2560&sni=dk8KdCpTc35y-2a3ouYgVB7eheCRy9C.pAgES.dEv',
+  'trojan://etmW1GglFakEXVcq12UZ@www.ignitelimit.com:2053?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2FNtCGrJpDV1hYjP5FZ1%3Fed%3D2560&sni=DK8kDcPTC35y-2a3OUyGVb7EheCry9c.PAGes.dEV',
+  'trojan://etmW1GglFakEXVcq12UZ@chatgpt.com:2053?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2Fl6RPvy8fU4JMWArRkzLIzIMsOS7MHX%3Fed%3D2560&sni=Dk8kDcPTc35Y-2a3oUYGVB7Ehecry9C.PAGES.dev',
+  'trojan://etmW1GglFakEXVcq12UZ@www.fiverr.com:2053?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2FP1pnu1sUWi6nsDzHIZQC%3Fed%3D2560&sni=Dk8KdCptc35y-2a3oUYGvB7eHecRY9C.Pages.dev',
 ];
 
-// إعدادات TLS اللي تنضاف لـ BPB و BLUE (نفس إعدادات موقع المحوّل)
+// إعدادات TLS اللي تنضاف لـ BPB و BPB2 (نفس إعدادات موقع المحوّل)
 const CS = ['TLS_AES_256_GCM_SHA384', 'TLS_CHACHA20_POLY1305_SHA256', 'TLS_AES_128_GCM_SHA256', 'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384', 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384', 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256', 'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256', 'TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256', 'TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256', 'TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA', 'TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA', 'TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256', 'TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256'];
 const FM = { tcp: [{ type: 'fragment', settings: { packets: 'tlshello', lengths: ['0', '104', '1'], delays: ['0'], maxSplit: '0' } }, { type: 'fragment', settings: { packets: '1-1', lengths: ['114', '1'], delays: ['1'], maxSplit: '11' } }] };
 const TLS_EXTRA = 'fp=unsafe&alpn=http%2F1.1&cs=' + CS.join('%3A') + '&fm=' + encodeURIComponent(JSON.stringify(FM));
@@ -97,7 +105,8 @@ function decodeSub(text) {
 }
 
 function toLines(text) {
-  return decodeSub(text).split(/\r?\n/).map(s => s.trim()).filter(s => s.includes('://'));
+  return decodeSub(text).split(/\r?
+/).map(s => s.trim()).filter(s => s.includes('://'));
 }
 
 function getName(line) {
@@ -200,8 +209,8 @@ async function main() {
   fs.mkdirSync('sub', { recursive: true });
   const majma = getMajma();
   const bpb = getGroup(BPB, 'Al-Farahidi', '💧');
-  const blue = getGroup(BLUE, 'Al-Mutanabbi', '🐎');
-  console.log('MAJMA OK:', majma.length, '| BPB OK:', bpb.length, '| BLUE OK:', blue.length);
+  const bpb2 = getGroup(BPB2, 'Al-Farahidi', '💧');
+  console.log('MAJMA OK:', majma.length, '| BPB OK:', bpb.length, '| BPB2 OK:', bpb2.length);
 
   for (const s of SUBS) {
     const out = [];
@@ -210,9 +219,10 @@ async function main() {
     if (s.spider) out.push(...getSpider());
     if (s.majma) out.push(...majma);
     if (s.bpb) out.push(...bpb);
-    if (s.blue) out.push(...blue);
+    if (s.bpb2) out.push(...bpb2);
     if (out.length === 0) { console.log(`#${s.n} nothing, keeping old file`); continue; }
-    fs.writeFileSync(`sub/${s.token}.txt`, Buffer.from(out.join('\n'), 'utf-8').toString('base64'));
+    fs.writeFileSync(`sub/${s.token}.txt`, Buffer.from(out.join('
+'), 'utf-8').toString('base64'));
     console.log(`#${s.n} saved:`, out.length);
   }
 }

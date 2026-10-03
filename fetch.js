@@ -2,13 +2,17 @@ const fs = require('fs');
 const NL = String.fromCharCode(10);
 
 const SUBS = [
-  { n: 1, token: 'r6d3k9w2', zeus: 'https://huzcone1u80s.snzasdesuecs.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, bpb2: false },
-  { n: 2, token: 'm4q8z1v7', zeus: 'https://mpzcnxesub5s.h9zvw7ewuk9s.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, bpb2: false },
-  { n: 3, token: 'h9c5t2x6', zeus: 'https://qfzb3eejuyls.9rzx6oe9uycs.workers.dev/feed/0727443Z', spider: false, majma: true, bpb: true, bpb2: false },
-  { n: 4, token: 'k8x2n7m4', zeus: 'https://ujzj0fe8ua4s.t6zthde5udls.workers.dev/feed/46416WLG', spider: false, majma: true, bpb: false, bpb2: true },
-  { n: 5, token: 't7h2j8r4', zeus: 'https://sczembecuxis.mizmy4etujes.workers.dev/feed/6OYL1WRB', spider: false, majma: true, bpb: false, bpb2: true },
-  { n: 6, token: 'b5m1c6w9', zeus: 'https://ubzhqnetujss.sabah-16.workers.dev/feed/8UGULZKC', spider: false, majma: true, bpb: false, bpb2: true },
+  { n: 1, token: 'r6d3k9w2', zeus: 'https://huzcone1u80s.snzasdesuecs.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, bpb2: false, superjin: true },
+  { n: 2, token: 'm4q8z1v7', zeus: 'https://mpzcnxesub5s.h9zvw7ewuk9s.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, bpb2: false, superjin: true },
+  { n: 3, token: 'h9c5t2x6', zeus: 'https://qfzb3eejuyls.9rzx6oe9uycs.workers.dev/feed/0727443Z', spider: false, majma: true, bpb: true, bpb2: false, superjin: true },
+  { n: 4, token: 'k8x2n7m4', zeus: 'https://ujzj0fe8ua4s.t6zthde5udls.workers.dev/feed/46416WLG', spider: false, majma: true, bpb: false, bpb2: true, superjin: false },
+  { n: 5, token: 't7h2j8r4', zeus: 'https://sczembecuxis.mizmy4etujes.workers.dev/feed/6OYL1WRB', spider: false, majma: true, bpb: false, bpb2: true, superjin: false },
+  { n: 6, token: 'b5m1c6w9', zeus: 'https://ubzhqnetujss.sabah-16.workers.dev/feed/8UGULZKC', spider: false, majma: true, bpb: false, bpb2: true, superjin: false },
 ];
+
+// سوبرجين = جرير (للمشتركين 1-3)
+const SUPERJIN_URL = 'https://alolo01-production-f942.up.railway.app/sub/djMsMSwxNzkxMDYwMjE1.WReIxmV-gYDCeN9C-swstPVCNrexMmR4tv81BcCW9Bc';
+const SUPERJIN_ADDR = 'alolo01-production-f942.up.railway.app';
 
 const MAJMA = [
   'vless://e081da45-9fae-4687-9376-f9a6a0dbbe83@104.20.28.233:80?encryption=none&security=none&type=ws&host=e33xr.qzz.io&path=%2Fid-amz#5845',
@@ -95,7 +99,7 @@ const FLAG_EXTRA = {
 };
 
 async function get(url) {
-  const res = await fetch(url, { headers: { 'User-Agent': 'v2rayNG/1.8.5' } });
+  const res = await fetch(url, { headers: { 'User-Agent': 'v2rayNG/1.8.5' }, signal: AbortSignal.timeout(20000) });
   if (!res.ok) throw new Error(url + ' -> ' + res.status);
   return (await res.text()).trim();
 }
@@ -205,12 +209,43 @@ function getGroup(list, poet, icon) {
   });
 }
 
+// سوبرجين: يجيب الكونفيقات، يغيّر العنوان، ويسميها جرير مع علم هولندا
+async function getSuperjin() {
+  const out = [];
+  let n = 0;
+  for (const line of toLines(await get(SUPERJIN_URL))) {
+    const scheme = line.split('://')[0].toLowerCase();
+    if (scheme === 'vmess') {
+      try {
+        const obj = JSON.parse(Buffer.from(line.slice(8).split('#')[0], 'base64').toString('utf-8'));
+        n++;
+        obj.add = SUPERJIN_ADDR;
+        obj.ps = `🇳🇱 │ Jarir │ ${n} │ ` + majmaProto('vmess', obj.net, false);
+        out.push('vmess://' + Buffer.from(JSON.stringify(obj), 'utf-8').toString('base64'));
+      } catch { }
+      continue;
+    }
+    const i = line.indexOf('#');
+    let base = i === -1 ? line : line.slice(0, i);
+    if (!/@[^?#]+:\d+/.test(base)) continue;
+    base = base.replace(/@(\[[^\]]+\]|[^:\/?#@]+):(\d+)/, '@' + SUPERJIN_ADDR + ':$2');
+    const q = base.includes('?') ? base.slice(base.indexOf('?') + 1) : '';
+    const net = (q.match(/(?:^|&)type=([^&]+)/) || ['', ''])[1].toLowerCase();
+    const reality = /security=reality/.test(q);
+    n++;
+    out.push(base + '#' + encodeURIComponent(`🇳🇱 │ Jarir │ ${n} │ ` + majmaProto(scheme, net, reality)));
+  }
+  return out;
+}
+
 async function main() {
   fs.mkdirSync('sub', { recursive: true });
   const majma = getMajma();
   const bpb = getGroup(BPB, 'Al-Farahidi', '💧');
   const bpb2 = getGroup(BPB2, 'Al-Farahidi', '💧');
-  console.log('MAJMA OK:', majma.length, '| BPB OK:', bpb.length, '| BPB2 OK:', bpb2.length);
+  let superjin = [];
+  try { superjin = await getSuperjin(); } catch (e) { console.log('SUPERJIN ERROR:', e.message); }
+  console.log('MAJMA OK:', majma.length, '| BPB OK:', bpb.length, '| BPB2 OK:', bpb2.length, '| SUPERJIN OK:', superjin.length);
 
   for (const s of SUBS) {
     const out = [];
@@ -220,6 +255,7 @@ async function main() {
     if (s.majma) out.push(...majma);
     if (s.bpb) out.push(...bpb);
     if (s.bpb2) out.push(...bpb2);
+    if (s.superjin) out.push(...superjin);
     if (out.length === 0) { console.log(`#${s.n} nothing, keeping old file`); continue; }
     fs.writeFileSync(`sub/${s.token}.txt`, Buffer.from(out.join(NL), 'utf-8').toString('base64'));
     console.log(`#${s.n} saved:`, out.length);
@@ -227,3 +263,10 @@ async function main() {
 }
 
 main();
+
+**نصايحي:**
+أهم شي إن المستودع Public، وأي أحد يدخله يشوف كل التوكنات وروابط ZEUS ورابط سوبرجين. أنصحك ننقلها إلى GitHub Secrets، وإذا تبي أشرح لك الطريقة خطوة خطوة.
+وحدّث ملف الذاكرة عندك: سوبرجين اسمه جرير (Jarir)، للمشتركين 1-3، ويتحدث تلقائي من الرابط.
+
+وهذا نفس الملف لو تحتاجه احتياط: [fetch.js](https://u308622784.p.clickup-attachments.com/u308622784/f25998b1-6aa6-5fb2-a065-91785b1c7d5c/fetch.js?view=open)
+

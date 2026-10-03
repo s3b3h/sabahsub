@@ -561,7 +561,11 @@ function transformSuperJinx(line, index) {
   }
 
   if (['vless', 'trojan', 'ss'].includes(scheme)) {
-    throw new Error(`Unsupported protocol at item ${index + 1}`);
+throw new Error(
+  `Unsupported protocol at item ${index + 1}; scheme=${
+    JSON.stringify((line.match(/^([a-z][a-z0-9+.-]*):\/\//i) || [])[1] || 'unrecognized')
+  }`
+);
   }
 
   const hash = line.indexOf('#');

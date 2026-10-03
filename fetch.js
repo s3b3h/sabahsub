@@ -15,19 +15,7 @@ const SUPERJIN_URL = 'https://alolo01-production-f942.up.railway.app/sub/djMsMSw
 const SUPERJIN_ADDR = 'alolo01-production-f942.up.railway.app';
 
 const MAJMA = [
-  'vless://e081da45-9fae-4687-9376-f9a6a0dbbe83@104.20.28.233:80?encryption=none&security=none&type=ws&host=e33xr.qzz.io&path=%2Fid-amz#5845',
-  'vless://bfb1ec97-a326-4cf3-adcf-d2a0e2dc49f8@199.232.78.159:443?encryption=none&security=tls&sni=ssl.fastly.com&type=ws&host=pan2e.global.ssl.fastly.net&path=%2F#🇺🇸 4499',
-  'vless://7d0fd363-16d2-43ce-9d6d-ed2c15d2cb7c@51.15.16.68:2053?encryption=none&security=reality&sni=www.apple.com&fp=random&pbk=Zotx4F9CI6_q9yeKCKIHDjwzCv_Aq7WSo7N0Zc1A6Sc&sid=3c99c85cbb6b3b44&type=tcp&headerType=none#🇳🇱 6625',
-  'vless://5d16ac22-6eea-426f-b778-6f4c2961faef@176.109.104.103:9881?encryption=none&security=reality&sni=dl.google.com&fp=firefox&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&type=grpc&authority=&serviceName=grpc-tunnel&mode=gun#🇷🇺 6354',
-  'vless://XpnTeam-59@199.232.78.160:443?encryption=none&security=tls&sni=ssl.fastly.com&fp=chrome&alpn=http%2F1.1&type=ws&host=Appxdn.global.ssl.fastly.net&path=%2F#🇺🇸 8461',
-  'vless://5d16ac22-6eea-426f-b778-6f4c2961faef@176.109.111.7:9881?encryption=none&security=reality&sni=dl.google.com&fp=chrome&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&sid=aa&type=grpc&authority=%2F%3FTELEGRAM--MARAMBASHI--MARAMBASHI&serviceName=grpc-tunnel&mode=gun#🇷🇺 5935',
-  'vless://5d16ac22-6eea-426f-b778-6f4c2961faef@176.108.245.167:9881?encryption=none&security=reality&sni=dl.google.com&fp=chrome&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&sid=aabbccdd&type=grpc&authority=&serviceName=grpc-tunnel&mode=gun#🇷🇺 1537',
-  'vless://ebeb7358-9fc0-4222-a0e5-d8bc274a8856@199.232.78.159:443?encryption=none&security=tls&sni=ssl.fastly.com&type=ws&host=swissjji.global.ssl.fastly.net.&path=%2F#🇺🇸 6968',
-  'ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpnSmU3dW1TdEljazVNaWVn@20.166.59.119:443#🇮🇪 68',
-  'vless://ebeb7358-9fc0-4222-a0e5-d8bc274a8856@199.232.78.159:443?encryption=none&security=tls&sni=ssl.fastly.com&type=ws&host=looazjboijji.global.ssl.fastly.net.&path=%2F#248',
   'trojan://humanity@188.114.97.6:443?security=tls&sni=www.pleadcourt.org&fm=%7B%22tcp%22%3A%5B%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%22tlshello%22%2C%22lengths%22%3A%5B%220%22%2C%22104%22%2C%221%22%5D%2C%22delays%22%3A%5B%220%22%5D%2C%22maxSplit%22%3A%220%22%7D%7D%2C%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%221-1%22%2C%22lengths%22%3A%5B%22114%22%2C%221%22%5D%2C%22delays%22%3A%5B%221%22%5D%2C%22maxSplit%22%3A%2211%22%7D%7D%5D%7D&type=ws&host=www.pleadcourt.org&path=%2Fassignment#136',
-  'vless://55af8466-53cd-46f4-aef9-5378f5ac34a4@n2.akan1.ir:8443?encryption=none&security=tls&sni=home.akan1.ir&fp=chrome&type=xhttp&host=home.akan1.ir&path=%2F&mode=auto&extra=%7B%22mode%22%3A%22auto%22%2C%22xPaddingBytes%22%3A%22100-1000%22%7D#189',
-  'trojan://ymk9eBP4Ams3-ncYCV4kDAezUzBfkR8x@31.129.42.164:6443?security=tls&sni=node111.ichost.cloud&fp=ios&alpn=h2%2Chttp%2F1.1&type=tcp&headerType=none#🇷🇺 141',
 ];
 
 // BPB = الفراهيدي (للمشتركين 1-3)
@@ -220,7 +208,7 @@ async function getSuperjin() {
         const obj = JSON.parse(Buffer.from(line.slice(8).split('#')[0], 'base64').toString('utf-8'));
         n++;
         obj.add = SUPERJIN_ADDR;
-        obj.ps = `🇳🇱 │ Jarir │ ${n} │ ` + majmaProto('vmess', obj.net, false);
+        obj.ps = `🇳🇱 │ Jarir │ AI │ ${n} │ ` + majmaProto('vmess', obj.net, false);
         out.push('vmess://' + Buffer.from(JSON.stringify(obj), 'utf-8').toString('base64'));
       } catch { }
       continue;
@@ -233,7 +221,7 @@ async function getSuperjin() {
     const net = (q.match(/(?:^|&)type=([^&]+)/) || ['', ''])[1].toLowerCase();
     const reality = /security=reality/.test(q);
     n++;
-    out.push(base + '#' + encodeURIComponent(`🇳🇱 │ Jarir │ ${n} │ ` + majmaProto(scheme, net, reality)));
+    out.push(base + '#' + encodeURIComponent(`🇳🇱 │ Jarir │ AI │ ${n} │ ` + majmaProto(scheme, net, reality)));
   }
   return out;
 }

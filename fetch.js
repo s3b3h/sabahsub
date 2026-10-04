@@ -2,17 +2,21 @@ const fs = require('fs');
 const NL = String.fromCharCode(10);
 
 const SUBS = [
-  { n: 1, token: 'r6d3k9w2', zeus: 'https://huzcone1u80s.snzasdesuecs.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, bpb2: false, superjin: true },
-  { n: 2, token: 'm4q8z1v7', zeus: 'https://mpzcnxesub5s.h9zvw7ewuk9s.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, bpb2: false, superjin: true },
-  { n: 3, token: 'h9c5t2x6', zeus: 'https://qfzb3eejuyls.9rzx6oe9uycs.workers.dev/feed/0727443Z', spider: false, majma: true, bpb: true, bpb2: false, superjin: true },
-  { n: 4, token: 'k8x2n7m4', zeus: 'https://ujzj0fe8ua4s.t6zthde5udls.workers.dev/feed/46416WLG', spider: false, majma: true, bpb: false, bpb2: true, superjin: false },
-  { n: 5, token: 't7h2j8r4', zeus: 'https://sczembecuxis.mizmy4etujes.workers.dev/feed/6OYL1WRB', spider: false, majma: true, bpb: false, bpb2: true, superjin: false },
-  { n: 6, token: 'b5m1c6w9', zeus: 'https://ubzhqnetujss.sabah-16.workers.dev/feed/8UGULZKC', spider: false, majma: true, bpb: false, bpb2: true, superjin: false },
+  { n: 1, token: 'r6d3k9w2', zeus: 'https://huzcone1u80s.snzasdesuecs.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, bpb2: false, superjin: true, superjin2: false },
+  { n: 2, token: 'm4q8z1v7', zeus: 'https://mpzcnxesub5s.h9zvw7ewuk9s.workers.dev/feed/AbuNuwas', spider: false, majma: true, bpb: true, bpb2: false, superjin: true, superjin2: false },
+  { n: 3, token: 'h9c5t2x6', zeus: 'https://qfzb3eejuyls.9rzx6oe9uycs.workers.dev/feed/0727443Z', spider: false, majma: true, bpb: true, bpb2: false, superjin: true, superjin2: false },
+  { n: 4, token: 'k8x2n7m4', zeus: 'https://ujzj0fe8ua4s.t6zthde5udls.workers.dev/feed/46416WLG', spider: false, majma: true, bpb: false, bpb2: true, superjin: false, superjin2: true },
+  { n: 5, token: 't7h2j8r4', zeus: 'https://sczembecuxis.mizmy4etujes.workers.dev/feed/6OYL1WRB', spider: false, majma: true, bpb: false, bpb2: true, superjin: false, superjin2: true },
+  { n: 6, token: 'b5m1c6w9', zeus: 'https://ubzhqnetujss.sabah-16.workers.dev/feed/8UGULZKC', spider: false, majma: true, bpb: false, bpb2: true, superjin: false, superjin2: true },
 ];
 
-// سوبرجين = جرير (للمشتركين 1-3)
+// سوبرجين 1 = جرير (للمشتركين 1-3)
 const SUPERJIN_URL = 'https://alolo01-production-f942.up.railway.app/sub/djMsMSwxNzkxMDYwMjE1.WReIxmV-gYDCeN9C-swstPVCNrexMmR4tv81BcCW9Bc';
 const SUPERJIN_ADDR = 'alolo01-production-f942.up.railway.app';
+
+// سوبرجين 2 = جرير (للمشتركين 4-6)
+const SUPERJIN2_URL = 'https://alolo02-production-f222.up.railway.app/sub/djMsMSwxNzkxMDg4NTM5.JD6MSsrRt4iAA5J-I67agqE-BneluEvBDbwODMLmtnE';
+const SUPERJIN2_ADDR = 'alolo02-production-f222.up.railway.app';
 
 const MAJMA = [
   'trojan://humanity@188.114.97.6:443?security=tls&sni=www.pleadcourt.org&fm=%7B%22tcp%22%3A%5B%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%22tlshello%22%2C%22lengths%22%3A%5B%220%22%2C%22104%22%2C%221%22%5D%2C%22delays%22%3A%5B%220%22%5D%2C%22maxSplit%22%3A%220%22%7D%7D%2C%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%221-1%22%2C%22lengths%22%3A%5B%22114%22%2C%221%22%5D%2C%22delays%22%3A%5B%221%22%5D%2C%22maxSplit%22%3A%2211%22%7D%7D%5D%7D&type=ws&host=www.pleadcourt.org&path=%2Fassignment#136',
@@ -197,17 +201,18 @@ function getGroup(list, poet, icon) {
   });
 }
 
-// سوبرجين: يجيب الكونفيقات، يغيّر العنوان، ويسميها جرير مع علم هولندا
-async function getSuperjin() {
+// سوبرجين: يجيب الكونفيقات من الرابط، يغيّر العنوان، ويسميها جرير مع علم هولندا
+// يشتغل لسوبرجين 1 وسوبرجين 2 (كل واحد برابطه وعنوانه)
+async function getSuperjin(url, addr) {
   const out = [];
   let n = 0;
-  for (const line of toLines(await get(SUPERJIN_URL))) {
+  for (const line of toLines(await get(url))) {
     const scheme = line.split('://')[0].toLowerCase();
     if (scheme === 'vmess') {
       try {
         const obj = JSON.parse(Buffer.from(line.slice(8).split('#')[0], 'base64').toString('utf-8'));
         n++;
-        obj.add = SUPERJIN_ADDR;
+        obj.add = addr;
         obj.ps = `🇳🇱 │ Jarir │ AI │ ${n} │ ` + majmaProto('vmess', obj.net, false);
         out.push('vmess://' + Buffer.from(JSON.stringify(obj), 'utf-8').toString('base64'));
       } catch { }
@@ -216,7 +221,7 @@ async function getSuperjin() {
     const i = line.indexOf('#');
     let base = i === -1 ? line : line.slice(0, i);
     if (!/@[^?#]+:\d+/.test(base)) continue;
-    base = base.replace(/@(\[[^\]]+\]|[^:\/?#@]+):(\d+)/, '@' + SUPERJIN_ADDR + ':$2');
+    base = base.replace(/@(\[[^\]]+\]|[^:\/?#@]+):(\d+)/, '@' + addr + ':$2');
     const q = base.includes('?') ? base.slice(base.indexOf('?') + 1) : '';
     const net = (q.match(/(?:^|&)type=([^&]+)/) || ['', ''])[1].toLowerCase();
     const reality = /security=reality/.test(q);
@@ -232,8 +237,10 @@ async function main() {
   const bpb = getGroup(BPB, 'Al-Farahidi', '💧');
   const bpb2 = getGroup(BPB2, 'Al-Farahidi', '💧');
   let superjin = [];
-  try { superjin = await getSuperjin(); } catch (e) { console.log('SUPERJIN ERROR:', e.message); }
-  console.log('MAJMA OK:', majma.length, '| BPB OK:', bpb.length, '| BPB2 OK:', bpb2.length, '| SUPERJIN OK:', superjin.length);
+  try { superjin = await getSuperjin(SUPERJIN_URL, SUPERJIN_ADDR); } catch (e) { console.log('SUPERJIN ERROR:', e.message); }
+  let superjin2 = [];
+  try { superjin2 = await getSuperjin(SUPERJIN2_URL, SUPERJIN2_ADDR); } catch (e) { console.log('SUPERJIN2 ERROR:', e.message); }
+  console.log('MAJMA OK:', majma.length, '| BPB OK:', bpb.length, '| BPB2 OK:', bpb2.length, '| SUPERJIN OK:', superjin.length, '| SUPERJIN2 OK:', superjin2.length);
 
   for (const s of SUBS) {
     const out = [];
@@ -244,6 +251,7 @@ async function main() {
     if (s.bpb) out.push(...bpb);
     if (s.bpb2) out.push(...bpb2);
     if (s.superjin) out.push(...superjin);
+    if (s.superjin2) out.push(...superjin2);
     if (out.length === 0) { console.log(`#${s.n} nothing, keeping old file`); continue; }
     fs.writeFileSync(`sub/${s.token}.txt`, Buffer.from(out.join(NL), 'utf-8').toString('base64'));
     console.log(`#${s.n} saved:`, out.length);

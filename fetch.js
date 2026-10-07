@@ -44,13 +44,13 @@ const SUBS = [
   },
   {
     n: 5,
-    token: 't7h2j8r4',
-    zeus: 'https://sczembecuxis.mizmy4etujes.workers.dev/feed/6OYL1WRB',
-    tim9: 'https://api.tim9.ir/dl/djMsMjM3MDAsMTc5MTQwNDkzMA.RLeZqkxLeUrY-nO98nYyfTwi7WoCfNBL-3vDu6okL-0',
-    bpb: false,
-    bpb2: true,
-    superjin: false,
-    superjin2: true
+token: 't7h2j8r4',
+zeus: 'https://sczembecuxis.mizmy4etujes.workers.dev/feed/6OYL1WRB',
+tim9: 'https://api.tim9.ir/dl/djMsMjM3MDAsMTc5MTQwNDkzMA.RLeZqkxLeUrY-nO98nYyfTwi7WoCfNBL-3vDu6okL-0',
+bpb: false,
+bpb2: true,
+superjin: false,
+superjin2: true
   },
   {
     n: 6,

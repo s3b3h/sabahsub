@@ -26,6 +26,7 @@ const SUPERJIN2 = [
 
 const MAJMA = [
  'trojan://humanity@188.114.97.6:443?security=tls&sni=www.pleadcourt.org&fm=%7B%22tcp%22%3A%5B%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%22tlshello%22%2C%22lengths%22%3A%5B%220%22%2C%22104%22%2C%221%22%5D%2C%22delays%22%3A%5B%220%22%5D%2C%22maxSplit%22%3A%220%22%7D%7D%2C%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%221-1%22%2C%22lengths%22%3A%5B%22114%22%2C%221%22%5D%2C%22delays%22%3A%5B%221%22%5D%2C%22maxSplit%22%3A%2211%22%7D%7D%5D%7D&type=ws&host=www.pleadcourt.org&path=%2Fassignment#136',
+ 'trojan://humanity@www.speedtest.net:443?security=tls&sni=www.calmlunch.com&ech=ip.gs%2Budp%3A%2F%2F8.8.8.8&type=ws&host=www.calmlunch.com&path=%2Fassignment#2716',
 ];
 
 // BPB = الفراهيدي (للمشتركين 1-3)
@@ -76,10 +77,9 @@ const BPB2 = [
  'trojan://etmW1GglFakEXVcq12UZ@www.fiverr.com:2053?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2FP1pnu1sUWi6nsDzHIZQC%3Fed%3D2560&sni=Dk8KdCptc35y-2a3oUYGvB7eHecRY9C.Pages.dev',
 ];
 
-// إعدادات TLS اللي تنضاف لـ BPB و BPB2 (نفس إعدادات موقع المحوّل)
-const CS = ['TLS_AES_256_GCM_SHA384', 'TLS_CHACHA20_POLY1305_SHA256', 'TLS_AES_128_GCM_SHA256', 'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384', 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384', 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256', 'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256', 'TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256', 'TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256', 'TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA', 'TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA', 'TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256', 'TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256'];
-const FM = { tcp: [{ type: 'fragment', settings: { packets: 'tlshello', lengths: ['0', '104', '1'], delays: ['0'], maxSplit: '0' } }, { type: 'fragment', settings: { packets: '1-1', lengths: ['114', '1'], delays: ['1'], maxSplit: '11' } }] };
-const TLS_EXTRA = 'fp=unsafe&alpn=http%2F1.1&cs=' + CS.join('%3A') + '&fm=' + encodeURIComponent(JSON.stringify(FM));
+// إعدادات ECH اللي تنضاف لـ الفراهيدي و ZEUS (نفس طريقة ECH في موقع المحوّل)
+const ECH = 'cloudflare-ech.com+udp://1.1.1.1';
+const TLS_EXTRA = 'fp=chrome&alpn=http%2F1.1&ech=' + encodeURIComponent(ECH) + '&insecure=0&allowInsecure=0';
 
 const COUNTRY = { us: '🇺🇸', de: '🇩🇪', gb: '🇬🇧', uk: '🇬🇧', nl: '🇳🇱', fr: '🇫🇷', ca: '🇨🇦', fi: '🇫🇮', se: '🇸🇪', tr: '🇹🇷', sg: '🇸🇬', jp: '🇯🇵', ru: '🇷🇺', ie: '🇮🇪' };
 
@@ -133,6 +133,23 @@ function setName(line, name) {
  return base + '#' + encodeURIComponent(name);
 }
 
+// يحط ECH على vless و trojan اللي فيها tls بس، ويشيل أي fp أو alpn أو cs أو fm قديم
+function setEch(line) {
+ const scheme = line.split('://')[0].toLowerCase();
+ if (scheme !== 'vless' && scheme !== 'trojan') return line;
+ const h = line.indexOf('#');
+ const body = h === -1 ? line : line.slice(0, h);
+ const tag = h === -1 ? '' : line.slice(h);
+ const q = body.indexOf('?');
+ if (q === -1) return line;
+ const parts = body.slice(q + 1).split('&');
+ const sec = (parts.find(p => p.split('=')[0] === 'security') || '').split('=')[1] || '';
+ if (sec.toLowerCase() !== 'tls') return line;
+ const drop = ['cs', 'fm', 'echConfigList', 'fp', 'alpn', 'ech', 'insecure', 'allowInsecure'];
+ const keep = parts.filter(p => !drop.includes(p.split('=')[0]));
+ return body.slice(0, q) + '?' + keep.join('&') + '&' + TLS_EXTRA + tag;
+}
+
 function zeusName(old) {
  const m = old.match(/[\u{1F1E6}-\u{1F1FF}]{2}/u);
  if (m) {
@@ -148,7 +165,7 @@ async function getZeus(url) {
  for (const line of toLines(await get(url))) {
  const name = getName(line);
  if (BAD_WORDS.some(w => name.includes(w))) continue;
- out.push(setName(line, zeusName(name)));
+ out.push(setName(setEch(line), zeusName(name)));
  }
  return out;
 }
@@ -203,7 +220,7 @@ function getGroup(list, poet, icon) {
  const q = line.slice(line.indexOf('?') + 1);
  const net = (q.match(/(?:^|&)type=([^&]+)/) || ['', ''])[1].toLowerCase();
  const name = `${poet} │ ${icon} │ ${i + 1} │ ` + majmaProto(scheme, net, false);
- return line + '&' + TLS_EXTRA + '#' + encodeURIComponent(name);
+ return setEch(line) + '#' + encodeURIComponent(name);
  });
 }
 

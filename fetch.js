@@ -1,8 +1,3 @@
-Claude Opus 5.51 min ago
-
-حقك علي، الكود السابق كان فيه خطأ في رابط عبودي. انسخ من const fs إلى main(); والصقه مكان الملف كاملًا:
-
-
 const fs = require('fs');
 const NL = String.fromCharCode(10);
 

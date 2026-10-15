@@ -61,6 +61,17 @@ superjin2: true
     bpb2: true,
     superjin: false,
     superjin2: true
+  },
+  {
+    n: 7,
+    token: 'f5n2q8z3',
+    zeus: '',
+    tim9: 'https://api.tim9.ir/dl/djMsMjU1MzcsMTc5MjA2MzEzMQ._yc-v6v_9fYcitPQ4qEX_S9rHIXbYktWESlN7dv32mQ',
+    bpb: false,
+    bpb2: false,
+    superjin: false,
+    superjin2: false,
+    jarir3: true
   }
 ];
 
@@ -125,6 +136,25 @@ const BPB2 = [
   'trojan://etmW1GglFakEXVcq12UZ@www.ignitelimit.com:2053?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2FNtCGrJpDV1hYjP5FZ1%3Fed%3D2560&sni=DK8kDcPTC35y-2a3OUyGVb7EheCry9c.PAGes.dEV',
   'trojan://etmW1GglFakEXVcq12UZ@chatgpt.com:2053?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2Fl6RPvy8fU4JMWArRkzLIzIMsOS7MHX%3Fed%3D2560&sni=Dk8KDCPtc35Y-2a3oUYGVB7Ehecry9C.PAGES.dev',
   'trojan://etmW1GglFakEXVcq12UZ@www.fiverr.com:2053?host=dk8kdcptc35y-2a3ouygvb7ehecry9c.pages.dev&type=ws&security=tls&path=%2Ftr%2FP1pnu1sUWi6nsDzHIZQC%3Fed%3D2560&sni=Dk8KdCptc35y-2a3oUYGvB7EhecRY9C.Pages.dev'
+];
+
+const JARIR3 = [
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@104.21.36.156:443?encryption=none&security=tls&sni=mebPb0.MeBpB0.WORKErS.Dev&fp=chrome&alpn=http%2F1.1&ech=cloudflare-ech.com%2Budp%3A%2F%2F1.1.1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoiWHRxRDFYTkIiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxOTUuMjAxLjE1MC40IiwiMTg4LjI0NS4xNjEuMTQxIiwiNDkuMTMuMjI4Ljg1IiwiNzkuMTM3LjE5Ny4yMTIiXX0%3D%3Fed%3D2560#Technamooz%203%20-%20VLESS%20-%20IPv4%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@172.67.196.121:443?encryption=none&security=tls&sni=mEbpB0.meBpB0.WORkErs.deV&fp=chrome&alpn=http%2F1.1&ech=cloudflare-ech.com%2Budp%3A%2F%2F1.1.1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoiQWV6bTI3TWZjIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTk1LjIwMS4xNTAuNCIsIjE4OC4yNDUuMTYxLjE0MSIsIjQ5LjEzLjIyOC44NSIsIjc5LjEzNy4xOTcuMjEyIl19%3Fed%3D2560#Technamooz%204%20-%20VLESS%20-%20IPv4%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@www.speedtest.net:443?encryption=none&security=tls&sni=MeBPB0.mEBpb0.WOrkERs.deV&fp=chrome&alpn=http%2F1.1&ech=cloudflare-ech.com%2Budp%3A%2F%2F1.1.1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoicHh4QmVzNkF2c3pWY0M2IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTk1LjIwMS4xNTAuNCIsIjE4OC4yNDUuMTYxLjE0MSIsIjQ5LjEzLjIyOC44NSIsIjc5LjEzNy4xOTcuMjEyIl19%3Fed%3D2560#Technamooz%202%20-%20VLESS%20-%20Domain%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@www.fiverr.com:443?encryption=none&security=tls&sni=meBpb0.mEbPb0.wORKeRS.DeV&fp=chrome&alpn=http%2F1.1&ech=cloudflare-ech.com%2Budp%3A%2F%2F1.1.1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoiYXFNQklUT2l0SDhqaWciLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxOTUuMjAxLjE1MC40IiwiMTg4LjI0NS4xNjEuMTQxIiwiNDkuMTMuMjI4Ljg1IiwiNzkuMTM3LjE5Ny4yMTIiXX0%3D%3Fed%3D2560#Technamooz%206%20-%20VLESS%20-%20Clean%20IP%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@mebpb0.mebpb0.workers.dev:443?encryption=none&security=tls&sni=MEBpb0.mEbPB0.wOrkERS.dEv&fp=chrome&alpn=http%2F1.1&ech=cloudflare-ech.com%2Budp%3A%2F%2F1.1.1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoiUHVMZzdnc0VTWnZNQjdEIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTk1LjIwMS4xNTAuNCIsIjE4OC4yNDUuMTYxLjE0MSIsIjQ5LjEzLjIyOC44NSIsIjc5LjEzNy4xOTcuMjEyIl19%3Fed%3D2560#Technamooz%201%20-%20VLESS%20-%20Domain%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@chatgpt.com:443?encryption=none&security=tls&sni=mEBPB0.mEBpb0.wORKeRs.DEV&fp=chrome&alpn=http%2F1.1&ech=cloudflare-ech.com%2Budp%3A%2F%2F1.1.1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoidlVieFozTk92eXdNaXN6RCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjE5NS4yMDEuMTUwLjQiLCIxODguMjQ1LjE2MS4xNDEiLCI0OS4xMy4yMjguODUiLCI3OS4xMzcuMTk3LjIxMiJdfQ%3D%3D%3Fed%3D2560#Technamooz%205%20-%20VLESS%20-%20Clean%20IP%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@mebpb0.mebpb0.workers.dev:443?encryption=none&security=tls&sni=MEBpb0.mEbPB0.wOrkERS.dEv&fp=chrome&alpn=http%2F1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoiUHVMZzdnc0VTWnZNQjdEIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTk1LjIwMS4xNTAuNCIsIjE4OC4yNDUuMTYxLjE0MSIsIjQ5LjEzLjIyOC44NSIsIjc5LjEzNy4xOTcuMjEyIl19%3Fed%3D2560#Technamooz%201%20-%20VLESS%20-%20Domain%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@www.speedtest.net:443?encryption=none&security=tls&sni=MeBPB0.mEBpb0.WOrkERs.deV&fp=chrome&alpn=http%2F1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoicHh4QmVzNkF2c3pWY0M2IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTk1LjIwMS4xNTAuNCIsIjE4OC4yNDUuMTYxLjE0MSIsIjQ5LjEzLjIyOC44NSIsIjc5LjEzNy4xOTcuMjEyIl19%3Fed%3D2560#Technamooz%202%20-%20VLESS%20-%20Domain%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@104.21.36.156:443?encryption=none&security=tls&sni=mebPb0.MeBpB0.WORKErS.Dev&fp=chrome&alpn=http%2F1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoiWHRxRDFYTkIiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxOTUuMjAxLjE1MC40IiwiMTg4LjI0NS4xNjEuMTQxIiwiNDkuMTMuMjI4Ljg1IiwiNzkuMTM3LjE5Ny4yMTIiXX0%3D%3Fed%3D2560#Technamooz%203%20-%20VLESS%20-%20IPv4%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@172.67.196.121:443?encryption=none&security=tls&sni=mEbpB0.meBpB0.WORkErs.deV&fp=chrome&alpn=http%2F1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoiQWV6bTI3TWZjIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTk1LjIwMS4xNTAuNCIsIjE4OC4yNDUuMTYxLjE0MSIsIjQ5LjEzLjIyOC44NSIsIjc5LjEzNy4xOTcuMjEyIl19%3Fed%3D2560#Technamooz%204%20-%20VLESS%20-%20IPv4%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@chatgpt.com:443?encryption=none&security=tls&sni=mEBPB0.mEBpb0.wORKeRs.DEV&fp=chrome&alpn=http%2F1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoidlVieFozTk92eXdNaXN6RCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjE5NS4yMDEuMTUwLjQiLCIxODguMjQ1LjE2MS4xNDEiLCI0OS4xMy4yMjguODUiLCI3OS4xMzcuMTk3LjIxMiJdfQ%3D%3D%3Fed%3D2560#Technamooz%205%20-%20VLESS%20-%20Clean%20IP%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@www.fiverr.com:443?encryption=none&security=tls&sni=meBpb0.mEbPb0.wORKeRS.DeV&fp=chrome&alpn=http%2F1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoiYXFNQklUT2l0SDhqaWciLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxOTUuMjAxLjE1MC40IiwiMTg4LjI0NS4xNjEuMTQxIiwiNDkuMTMuMjI4Ljg1IiwiNzkuMTM3LjE5Ny4yMTIiXX0%3D%3Fed%3D2560#Technamooz%206%20-%20VLESS%20-%20Clean%20IP%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@www.ignitelimit.com:443?encryption=none&security=tls&sni=MEBpb0.MeBPB0.woRKeRs.DEv&fp=chrome&alpn=http%2F1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoiUFZjYlZJR0YxZHVoVWl5IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTk1LjIwMS4xNTAuNCIsIjE4OC4yNDUuMTYxLjE0MSIsIjQ5LjEzLjIyOC44NSIsIjc5LjEzNy4xOTcuMjEyIl19%3Fed%3D2560#Technamooz%207%20-%20VLESS%20-%20Clean%20IP%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@188.114.98.0:443?encryption=none&security=tls&sni=auth.vercel.com&fp=chrome&alpn=http%2F1.1&type=ws&host=auth.vercel.com&path=%2FeyJqdW5rIjoiQW1kbDBRcW9HOWxpIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTk1LjIwMS4xNTAuNCIsIjE4OC4yNDUuMTYxLjE0MSIsIjQ5LjEzLjIyOC44NSIsIjc5LjEzNy4xOTcuMjEyIl19%3Fed%3D2560#Technamooz%208%20-%20VLESS%20C%20-%20IPv4%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@www.ignitelimit.com:443?encryption=none&security=tls&sni=MEBpb0.MeBPB0.woRKeRs.DEv&fp=chrome&alpn=http%2F1.1&ech=cloudflare-ech.com%2Budp%3A%2F%2F1.1.1.1&type=ws&host=mebpb0.mebpb0.workers.dev&path=%2FeyJqdW5rIjoiUFZjYlZJR0YxZHVoVWl5IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTk1LjIwMS4xNTAuNCIsIjE4OC4yNDUuMTYxLjE0MSIsIjQ5LjEzLjIyOC44NSIsIjc5LjEzNy4xOTcuMjEyIl19%3Fed%3D2560#Technamooz%207%20-%20VLESS%20-%20Clean%20IP%20%3A%20443',
+  'vless://6eaad7c5-e9c7-4015-81b9-464a7fb4a5f2@188.114.98.0:443?encryption=none&security=tls&sni=auth.vercel.com&fp=chrome&alpn=http%2F1.1&ech=cloudflare-ech.com%2Budp%3A%2F%2F1.1.1.1&type=ws&host=auth.vercel.com&path=%2FeyJqdW5rIjoiQW1kbDBRcW9HOWxpIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTk1LjIwMS4xNTAuNCIsIjE4OC4yNDUuMTYxLjE0MSIsIjQ5LjEzLjIyOC44NSIsIjc5LjEzNy4xOTcuMjEyIl19%3Fed%3D2560#Technamooz%208%20-%20VLESS%20C%20-%20IPv4%20%3A%20443'
 ];
 
 const ECH = 'cloudflare-ech.com+udp://1.1.1.1';
@@ -360,6 +390,28 @@ function getGroup(list, poet, icon) {
   });
 }
 
+function getFixed(list, poet, icon) {
+  return list.map((line, i) => {
+    const scheme = line.split('://')[0].toLowerCase();
+    const q = line.slice(line.indexOf('?') + 1);
+
+    const net =
+      (q.match(/(?:^|&)type=([^&]+)/) || ['', ''])[1]
+        .toLowerCase();
+
+    const name =
+      poet +
+      ' │ ' +
+      icon +
+      ' │ ' +
+      (i + 1) +
+      ' │ ' +
+      majmaProto(scheme, net, false);
+
+    return setName(line, name);
+  });
+}
+
 function getSuperjin(lines, addr) {
   const out = [];
   let n = 0;
@@ -455,6 +507,12 @@ async function main() {
     '💧'
   );
 
+  const jarir3 = getFixed(
+    JARIR3,
+    '🇳🇱 │ Jarir',
+    '🟤'
+  );
+
   let superjin = [];
 
   try {
@@ -482,26 +540,30 @@ async function main() {
     '| SUPERJIN OK:',
     superjin.length,
     '| SUPERJIN2 OK:',
-    superjin2.length
+    superjin2.length,
+    '| JARIR3 OK:',
+    jarir3.length
   );
 
   for (const s of SUBS) {
     const out = [];
 
-    try {
-      const z = await getZeus(s.zeus);
+    if (s.zeus) {
+      try {
+        const z = await getZeus(s.zeus);
 
-      out.push(...z);
+        out.push(...z);
 
-      console.log(
-        '#' + s.n + ' ZEUS OK:',
-        z.length
-      );
-    } catch (e) {
-      console.log(
-        '#' + s.n + ' ZEUS ERROR:',
-        e.message
-      );
+        console.log(
+          '#' + s.n + ' ZEUS OK:',
+          z.length
+        );
+      } catch (e) {
+        console.log(
+          '#' + s.n + ' ZEUS ERROR:',
+          e.message
+        );
+      }
     }
 
     if (s.tim9) {
@@ -536,6 +598,10 @@ async function main() {
 
     if (s.superjin2) {
       out.push(...superjin2);
+    }
+
+    if (s.jarir3) {
+      out.push(...jarir3);
     }
 
     if (out.length === 0) {

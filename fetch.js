@@ -58,7 +58,14 @@ const SUBS = [
     tim9: 'https://api.tim9.ir/dl/djMsMjYwMTYsMTc5MjI2MTA2Nw.hCwasV-ldrpq9oed_L3GdR9UzpiYc9nYNA5zegn-kn0',
     superjin: false,
     superjin2: false,
-    jarir3: false,
+    jarir4: true
+  },
+  {
+    n: 9,
+    token: 'm3d1a2d3',
+    tim9: 'https://api.tim9.ir/dl/djMsMjYwMTgsMTc5MjI2MTc1NQ.l43DOP0tiBHtVASTdtrdsbAnXTDiudK1UUB_oQheyis',
+    superjin: false,
+    superjin2: false,
     jarir4: true
   }
 ];
@@ -74,6 +81,13 @@ const SUPERJIN2_ADDR =
 
 const JARIR4_URL =
   'https://8ge-eskp6umvgrcpb.pages.dev/uqD6oh3wd-i0/sub/raw?app=xray';
+
+const ECH = 'cloudflare-ech.com+udp://1.1.1.1';
+
+const TLS_EXTRA =
+  'fp=chrome&alpn=http%2F1.1&ech=' +
+  encodeURIComponent(ECH) +
+  '&insecure=0&allowInsecure=0';
 
 const SUPERJIN2 = [
   'vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlx1RDgzRFx1REM4RSBcdUQ4MzVcdURERDdcdUQ4MzVcdURERjZcdUQ4MzVcdURERUVcdUQ4MzVcdURERkFcdUQ4MzVcdURERkNcdUQ4MzVcdUQ4MzVcdUQ4MzVcdURERkJcdUQ4MzVcdURERjEgfCDYrNuM2YbaqdizIHwgXHVEODM1XHVERTRFXHVEODM1XHVERTZBXHVEODM1XHVERTY1XHVEODM1XHVERTVBXHVEODM1XHVERTY3IFx1RDgzNVx1RERERFx1RDgzNVx1RERGNlx1RDgzNVx1RERFQlx1RDgzNVx1RERFQiIsDQogICJhZGQiOiAiYWxvbG8wMi1wcm9kdWN0aW9uLWYyMjIudXAucmFpbHdheS5hcHAiLA0KICAicG9ydCI6ICI0NDMiLA0KICAiaWQiOiAiZGVmNzcwODMtMDhjYi00YjJiLWFlZmUtYWJjYzg5ODkwYTQ1IiwNCiAgImFpZCI6ICIwIiwNCiAgInNjeSI6ICJhdXRvIiwNCiAgIm5ldCI6ICJ3cyIsDQogICJ0eXBlIjogIm5vbmUiLA0KICAiaG9zdCI6ICJhbG9sbzAyLXByb2R1Y3Rpb24udXAucmFpbHdheS5hcHAiLA0KICAicGF0aCI6ICIvdHcvMmYyODU0YjUtMWRlYS00NzU4LTk5MDgtZDQ0NDkxNjYwMjkxP2VkPTI1NjAiLA0KICAidGxzIjogInRscyIsDQogICJzbmkiOiAiYWxvbG8wMi1wcm9kdWN0aW9uLnVwLnJhaWx3YXkuYXBwIiwNCiAgImFscG4iOiAiaHR0cC8xLjEiLA0KICAiZnAiOiAiZWRnZSIsDQogICJjcyI6ICIiLA0KICAiaW5zZWN1cmUiOiAiMCIsDQogICJ2Y24iOiAiIiwNCiAgInBjcyI6ICIiLA0KICAiZGlhbE1vZGUiOiAiIg0KfQ==',
@@ -150,6 +164,55 @@ function setName(line, name) {
   return base + '#' + encodeURIComponent(name);
 }
 
+function setEch(line) {
+  const scheme = line.split('://')[0].toLowerCase();
+
+  if (scheme !== 'vless' && scheme !== 'trojan') {
+    return line;
+  }
+
+  const h = line.indexOf('#');
+  const body = h === -1 ? line : line.slice(0, h);
+  const tag = h === -1 ? '' : line.slice(h);
+  const q = body.indexOf('?');
+
+  if (q === -1) {
+    return line;
+  }
+
+  const parts = body.slice(q + 1).split('&');
+
+  const sec =
+    (parts.find(p => p.split('=')[0] === 'security') || '')
+      .split('=')[1] || '';
+
+  if (sec.toLowerCase() !== 'tls') {
+    return line;
+  }
+
+  const drop = [
+    'cs',
+    'fm',
+    'echConfigList',
+    'fp',
+    'alpn',
+    'ech',
+    'insecure',
+    'allowInsecure'
+  ];
+
+  const keep = parts.filter(
+    p => !drop.includes(p.split('=')[0])
+  );
+
+  return body.slice(0, q) +
+    '?' +
+    keep.join('&') +
+    '&' +
+    TLS_EXTRA +
+    tag;
+}
+
 function majmaProto(scheme, net, reality) {
   const P = {
     vless: 'VLESS',
@@ -176,7 +239,7 @@ function majmaProto(scheme, net, reality) {
   return T[net] ? p + '-' + T[net] : p;
 }
 
-function getFixed(list) {
+function getFixed(list, useEch) {
   return list.map((line, i) => {
     const scheme = line.split('://')[0].toLowerCase();
     const q = line.slice(line.indexOf('?') + 1);
@@ -191,7 +254,9 @@ function getFixed(list) {
       ' │ ' +
       majmaProto(scheme, net, false);
 
-    return setName(line, name);
+    const final = useEch ? setEch(line) : line;
+
+    return setName(final, name);
   });
 }
 
@@ -278,7 +343,7 @@ async function getTim9(url) {
 async function main() {
   fs.mkdirSync('sub', { recursive: true });
 
-  const jarir3 = getFixed(JARIR3);
+  const jarir3 = getFixed(JARIR3, false);
 
   let superjin = [];
 
@@ -303,7 +368,8 @@ async function main() {
 
   try {
     jarir4 = getFixed(
-      toLines(await get(JARIR4_URL))
+      toLines(await get(JARIR4_URL)),
+      true
     );
   } catch (e) {
     console.log(

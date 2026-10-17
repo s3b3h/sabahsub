@@ -176,7 +176,7 @@ function majmaProto(scheme, net, reality) {
   return T[net] ? p + '-' + T[net] : p;
 }
 
-function getFixed(list, poet, icon) {
+function getFixed(list) {
   return list.map((line, i) => {
     const scheme = line.split('://')[0].toLowerCase();
     const q = line.slice(line.indexOf('?') + 1);
@@ -186,10 +186,7 @@ function getFixed(list, poet, icon) {
         .toLowerCase();
 
     const name =
-      poet +
-      ' │ ' +
-      icon +
-      ' │ ' +
+      '💧 │ Jarir │ ' +
       (i + 1) +
       ' │ ' +
       majmaProto(scheme, net, false);
@@ -217,7 +214,7 @@ function getSuperjin(lines, addr) {
         n++;
         obj.add = addr;
         obj.ps =
-          '🇳🇱 │ Jarir │ AI │ ' +
+          '💧 │ Jarir │ ' +
           n +
           ' │ ' +
           majmaProto('vmess', obj.net, false);
@@ -263,7 +260,7 @@ function getSuperjin(lines, addr) {
       base +
       '#' +
       encodeURIComponent(
-        '🇳🇱 │ Jarir │ AI │ ' +
+        '💧 │ Jarir │ ' +
         n +
         ' │ ' +
         majmaProto(scheme, net, reality)
@@ -281,11 +278,7 @@ async function getTim9(url) {
 async function main() {
   fs.mkdirSync('sub', { recursive: true });
 
-  const jarir3 = getFixed(
-    JARIR3,
-    '🇳🇱 │ Jarir',
-    '🟤'
-  );
+  const jarir3 = getFixed(JARIR3);
 
   let superjin = [];
 
@@ -310,9 +303,7 @@ async function main() {
 
   try {
     jarir4 = getFixed(
-      toLines(await get(JARIR4_URL)),
-      '🇳🇱 │ Jarir',
-      'AI'
+      toLines(await get(JARIR4_URL))
     );
   } catch (e) {
     console.log(

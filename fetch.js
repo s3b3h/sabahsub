@@ -50,7 +50,8 @@ const SUBS = [
     tim9: 'https://api.tim9.ir/dl/djMsMjU1MzcsMTc5MjA2MzEzMQ._yc-v6v_9fYcitPQ4qEX_S9rHIXbYktWESlN7dv32mQ',
     superjin: false,
     superjin2: false,
-    jarir4: true
+    jarir0: true,
+    zeus0: true
   },
   {
     n: 8,
@@ -58,7 +59,8 @@ const SUBS = [
     tim9: 'https://api.tim9.ir/dl/djMsMjYwMTYsMTc5MjI2MTA2Nw.hCwasV-ldrpq9oed_L3GdR9UzpiYc9nYNA5zegn-kn0',
     superjin: false,
     superjin2: false,
-    jarir4: true
+    jarir0: true,
+    zeus0: true
   },
   {
     n: 9,
@@ -66,7 +68,8 @@ const SUBS = [
     tim9: 'https://api.tim9.ir/dl/djMsMjYwMTgsMTc5MjI2MTc1NQ.l43DOP0tiBHtVASTdtrdsbAnXTDiudK1UUB_oQheyis',
     superjin: false,
     superjin2: false,
-    jarir4: true
+    jarir0: true,
+    zeus0: true
   }
 ];
 
@@ -79,8 +82,11 @@ const SUPERJIN_ADDR =
 const SUPERJIN2_ADDR =
   'alolo02-production-f222.up.railway.app';
 
-const JARIR4_URL =
+const JARIR0_URL =
   'https://8ge-eskp6umvgrcpb.pages.dev/uqD6oh3wd-i0/sub/raw?app=xray';
+
+const ZEUS0_URL =
+  'https://04zpwbe7up7s.ezznctepuaos.workers.dev/feed/z0';
 
 const ECH = 'cloudflare-ech.com+udp://1.1.1.1';
 
@@ -90,6 +96,15 @@ const TLS_EXTRA =
   '&insecure=0&allowInsecure=0';
 
 const TIM9_BAD = /📊.*GB.*⏳.*✅/u;
+
+const ZEUS0_BAD_WORDS = [
+  'پنل رایگان',
+  'غیر قابل فروش',
+  'ساخت رایگان',
+  'remaining',
+  'Unlimited',
+  'PANEL_ZEUS ساخت'
+];
 
 const SUPERJIN2 = [
   'vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlx1RDgzRFx1REM4RSBcdUQ4MzVcdURERDdcdUQ4MzVcdURERjZcdUQ4MzVcdURERUVcdUQ4MzVcdURERkFcdUQ4MzVcdURERkNcdUQ4MzVcdUQ4MzVcdUQ4MzVcdURERkJcdUQ4MzVcdURERjEgfCDYrNuM2YbaqdizIHwgXHVEODM1XHVERTRFXHVEODM1XHVERTZBXHVEODM1XHVERTY1XHVEODM1XHVERTVBXHVEODM1XHVERTY3IFx1RDgzNVx1RERERFx1RDgzNVx1RERGNlx1RDgzNVx1RERFQlx1RDgzNVx1RERFQiIsDQogICJhZGQiOiAiYWxvbG8wMi1wcm9kdWN0aW9uLWYyMjIudXAucmFpbHdheS5hcHAiLA0KICAicG9ydCI6ICI0NDMiLA0KICAiaWQiOiAiZGVmNzcwODMtMDhjYi00YjJiLWFlZmUtYWJjYzg5ODkwYTQ1IiwNCiAgImFpZCI6ICIwIiwNCiAgInNjeSI6ICJhdXRvIiwNCiAgIm5ldCI6ICJ3cyIsDQogICJ0eXBlIjogIm5vbmUiLA0KICAiaG9zdCI6ICJhbG9sbzAyLXByb2R1Y3Rpb24udXAucmFpbHdheS5hcHAiLA0KICAicGF0aCI6ICIvdHcvMmYyODU0YjUtMWRlYS00NzU4LTk5MDgtZDQ0NDkxNjYwMjkxP2VkPTI1NjAiLA0KICAidGxzIjogInRscyIsDQogICJzbmkiOiAiYWxvbG8wMi1wcm9kdWN0aW9uLnVwLnJhaWx3YXkuYXBwIiwNCiAgImFscG4iOiAiaHR0cC8xLjEiLA0KICAiZnAiOiAiZWRnZSIsDQogICJjcyI6ICIiLA0KICAiaW5zZWN1cmUiOiAiMCIsDQogICJ2Y24iOiAiIiwNCiAgInBjcyI6ICIiLA0KICAiZGlhbE1vZGUiOiAiIg0KfQ==',
@@ -343,6 +358,61 @@ function getSuperjin(lines, addr) {
   return out;
 }
 
+function isZeus0Bad(name) {
+  if (ZEUS0_BAD_WORDS.some(w => name.includes(w))) {
+    return true;
+  }
+
+  if (!/^ZEUS\s*\|/i.test(name)) {
+    return true;
+  }
+
+  return false;
+}
+
+function getZeus0(lines) {
+  const out = [];
+
+  for (const line of lines) {
+    const name = getName(line);
+
+    if (isZeus0Bad(name)) {
+      continue;
+    }
+
+    let emoji = '🏳️';
+
+    const flag = name.match(/[\u{1F1E6}-\u{1F1FF}]{2}/u);
+
+    if (flag) {
+      emoji = flag[0];
+    } else {
+      const other = name.match(/[\u{1F300}-\u{1FAFF}]/u);
+
+      if (other) {
+        emoji = other[0];
+      }
+    }
+
+    const q = line.slice(line.indexOf('?') + 1);
+
+    const net =
+      (q.match(/(?:^|&)type=([^&]+)/) || ['', ''])[1]
+        .toLowerCase();
+
+    const scheme = line.split('://')[0].toLowerCase();
+
+    const newName =
+      emoji +
+      ' │ Al-Farazdaq │ AI │ ' +
+      majmaProto(scheme, net, false);
+
+    out.push(setName(line, newName));
+  }
+
+  return out;
+}
+
 async function getTim9(url) {
   return toLines(await get(url)).filter(
     line => !TIM9_BAD.test(getName(line))
@@ -371,16 +441,29 @@ async function main() {
     SUPERJIN2_ADDR
   );
 
-  let jarir4 = [];
+  let jarir0 = [];
 
   try {
-    jarir4 = getFixed(
-      toLines(await get(JARIR4_URL)),
+    jarir0 = getFixed(
+      toLines(await get(JARIR0_URL)),
       true
     );
   } catch (e) {
     console.log(
-      'JARIR4 ERROR:',
+      'JARIR0 ERROR:',
+      e.message
+    );
+  }
+
+  let zeus0 = [];
+
+  try {
+    zeus0 = getZeus0(
+      toLines(await get(ZEUS0_URL))
+    );
+  } catch (e) {
+    console.log(
+      'ZEUS0 ERROR:',
       e.message
     );
   }
@@ -390,8 +473,10 @@ async function main() {
     superjin.length,
     '| SUPERJIN2 OK:',
     superjin2.length,
-    '| JARIR4 OK:',
-    jarir4.length
+    '| JARIR0 OK:',
+    jarir0.length,
+    '| ZEUS0 OK:',
+    zeus0.length
   );
 
   for (const s of SUBS) {
@@ -415,6 +500,10 @@ async function main() {
       }
     }
 
+    if (s.zeus0) {
+      out.push(...zeus0);
+    }
+
     if (s.superjin) {
       out.push(...superjin);
     }
@@ -423,8 +512,8 @@ async function main() {
       out.push(...superjin2);
     }
 
-    if (s.jarir4) {
-      out.push(...jarir4);
+    if (s.jarir0) {
+      out.push(...jarir0);
     }
 
     if (out.length === 0) {

@@ -50,7 +50,7 @@ const SUBS = [
     tim9: 'https://api.tim9.ir/dl/djMsMjU1MzcsMTc5MjA2MzEzMQ._yc-v6v_9fYcitPQ4qEX_S9rHIXbYktWESlN7dv32mQ',
     superjin: false,
     superjin2: false,
-    jarir3: true
+    jarir4: true
   },
   {
     n: 8,

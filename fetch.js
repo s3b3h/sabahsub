@@ -70,6 +70,14 @@ const SUBS = [
     superjin2: false,
     jarir0: true,
     zeus0: true
+  },
+  {
+    n: 10,
+    token: 'i3s4y5u6',
+    tim9: '',
+    superjin: false,
+    superjin2: false,
+    jarir1New: true
   }
 ];
 
@@ -84,6 +92,9 @@ const SUPERJIN2_ADDR =
 
 const JARIR0_URL =
   'https://8ge-eskp6umvgrcpb.pages.dev/uqD6oh3wd-i0/sub/raw?app=xray';
+
+const JARIR1_NEW_URL =
+  'https://3hshqjhrv9fy2ydix.pages.dev/WScZYtEtSj-fQA/sub/raw?app=xray';
 
 const ZEUS0_URL =
   'https://04zpwbe7up7s.ezznctepuaos.workers.dev/feed/z0';
@@ -455,6 +466,20 @@ async function main() {
     );
   }
 
+  let jarir1New = [];
+
+  try {
+    jarir1New = getFixed(
+      toLines(await get(JARIR1_NEW_URL)),
+      true
+    );
+  } catch (e) {
+    console.log(
+      'JARIR1_NEW ERROR:',
+      e.message
+    );
+  }
+
   let zeus0 = [];
 
   try {
@@ -475,6 +500,8 @@ async function main() {
     superjin2.length,
     '| JARIR0 OK:',
     jarir0.length,
+    '| JARIR1_NEW OK:',
+    jarir1New.length,
     '| ZEUS0 OK:',
     zeus0.length
   );
@@ -514,6 +541,10 @@ async function main() {
 
     if (s.jarir0) {
       out.push(...jarir0);
+    }
+
+    if (s.jarir1New) {
+      out.push(...jarir1New);
     }
 
     if (out.length === 0) {

@@ -99,7 +99,7 @@ const JARIR1_NEW_URL =
 const ZEUS0_URL =
   'https://04zpwbe7up7s.ezznctepuaos.workers.dev/feed/z0';
 
-const ECH = 'cloudflare-ech.com+udp://1.1.1.1';
+const ECH = 'iranva.ir+udp://1.1.1.1';
 
 const TLS_EXTRA =
   'fp=chrome&alpn=http%2F1.1&ech=' +
